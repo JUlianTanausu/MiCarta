@@ -22,8 +22,9 @@
   width: 100%;
 }
 
+/* SVG stroke values: %23252018 = --color-surface-2, %23332E28 = --color-border, %233A3530 = mid-tone guide */
 .app__view--cards {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Cg opacity='0.7'%3E%3Cpath d='M -60 820 C 150 820 200 600 420 520 S 700 260 900 180 S 1100 80 1320 60' stroke='%23332E28' stroke-width='72' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -60 820 C 150 820 200 600 420 520 S 700 260 900 180 S 1100 80 1320 60' stroke='%232A2520' stroke-width='70' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -60 820 C 150 820 200 600 420 520 S 700 260 900 180 S 1100 80 1320 60' stroke='%233A3530' stroke-width='1.5' fill='none' stroke-dasharray='32 22' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 900'%3E%3Cg opacity='0.7'%3E%3Cpath d='M -60 820 C 150 820 200 600 420 520 S 700 260 900 180 S 1100 80 1320 60' stroke='%23332E28' stroke-width='72' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -60 820 C 150 820 200 600 420 520 S 700 260 900 180 S 1100 80 1320 60' stroke='%23252018' stroke-width='70' fill='none' stroke-linecap='round'/%3E%3Cpath d='M -60 820 C 150 820 200 600 420 520 S 700 260 900 180 S 1100 80 1320 60' stroke='%233A3530' stroke-width='1.5' fill='none' stroke-dasharray='32 22' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
