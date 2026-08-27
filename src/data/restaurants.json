@@ -1,0 +1,23 @@
+[
+  {
+    "id": "casa-nuri-barcelona",
+    "name": "Casa Nuri",
+    "cuisine": "Mariscos",
+    "city": "Barcelona",
+    "province": "Barcelona",
+    "coordinates": { "lat": 41.3798, "lng": 2.1877 },
+    "address": "Passeig de Joan de Borbó, Barcelona",
+    "phone": "+34 932 21 45 67",
+    "googleMapsUrl": "https://share.google/OYajRcFqm4Tk9by8E",
+    "websiteUrl": "",
+    "photos": [
+      "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80"
+    ],
+    "warning": "Mejor reservar, sobre todo en fin de semana",
+    "personalNote": "Vino de la casa, mejillones con salsa romesco y paella de la casa son espectaculares.",
+    "tags": ["mariscos", "paella", "romesco", "barcelona"],
+    "visitDate": "2024"
+  }
+]
