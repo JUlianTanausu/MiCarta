@@ -1,18 +1,19 @@
 .view-toggle {
   display: flex;
   gap: var(--space-1);
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
   padding: var(--space-1);
+  backdrop-filter: blur(8px);
 }
 
 .view-toggle__btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
   color: var(--color-text-muted);
   transition:
@@ -22,7 +23,7 @@
 
 .view-toggle__btn:hover {
   color: var(--color-text);
-  background: var(--color-border);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .view-toggle__btn--active {
@@ -33,4 +34,8 @@
 .view-toggle__btn--active:hover {
   background: var(--color-primary);
   color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .view-toggle__btn { transition: none; }
 }
