@@ -17,9 +17,9 @@ const baseRestaurant: Restaurant = {
 }
 
 describe('RestaurantCard', () => {
-  it('renders restaurant name', () => {
-    render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(screen.getByText('El Faro')).toBeInTheDocument()
+  it('renders restaurant name in heading', () => {
+    const { container } = render(<RestaurantCard restaurant={baseRestaurant} />)
+    expect(container.querySelector('.card__name')).toHaveTextContent('El Faro')
   })
 
   it('renders province', () => {
@@ -42,17 +42,6 @@ describe('RestaurantCard', () => {
     expect(link).toHaveAttribute('href', baseRestaurant.googleMapsUrl)
   })
 
-  it('shows website link when websiteUrl is provided', () => {
-    const withWeb = { ...baseRestaurant, websiteUrl: 'https://elfaro.es' }
-    render(<RestaurantCard restaurant={withWeb} />)
-    expect(screen.getByRole('link', { name: /web del restaurante/i })).toHaveAttribute('href', 'https://elfaro.es')
-  })
-
-  it('does not show website link when websiteUrl is absent', () => {
-    render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(screen.queryByRole('link', { name: /web del restaurante/i })).not.toBeInTheDocument()
-  })
-
   it('shows warning chip with full warning text when warning is set', () => {
     const withWarning = { ...baseRestaurant, warning: 'Reserva obligatoria' }
     render(<RestaurantCard restaurant={withWarning} />)
@@ -70,10 +59,10 @@ describe('RestaurantCard', () => {
   })
 
 
-  it('shows placeholder initial when photos array is empty', () => {
+  it('shows generated cover when photos array is empty', () => {
     const { container } = render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(container.querySelector('.card__placeholder-initial')).toBeInTheDocument()
-    expect(container.querySelector('.card__placeholder-initial')?.textContent).toBe('E')
+    expect(container.querySelector('.card__cover')).toBeInTheDocument()
+    expect(container.querySelector('.card__cover-emojis')).toBeInTheDocument()
   })
 
   it('uses first photo when photos array is non-empty', () => {

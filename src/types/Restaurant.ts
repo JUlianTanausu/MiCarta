@@ -22,7 +22,6 @@ export interface Restaurant {
 }
 
 export type ViewMode = 'cards' | 'map'
-export type Theme = 'dark' | 'light'
 
 export interface FilterState {
   city: string

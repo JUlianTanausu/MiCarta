@@ -3,10 +3,9 @@ import { motion } from 'framer-motion'
 import Particles, { ParticlesProvider } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 import type { Engine, ISourceOptions } from '@tsparticles/engine'
-import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 import { ViewToggle } from '../ViewToggle/ViewToggle'
 import { FilterBar } from '../FilterBar/FilterBar'
-import type { Theme, ViewMode, FilterState } from '../../types/Restaurant'
+import type { ViewMode, FilterState } from '../../types/Restaurant'
 import logoSrc from '../../assets/logo.png'
 import './Header.css'
 
@@ -15,8 +14,6 @@ const initEngine = (engine: Engine): Promise<void> => loadSlim(engine)
 interface HeaderProps {
   view: ViewMode
   onViewChange: (v: ViewMode) => void
-  theme: Theme
-  onThemeToggle: () => void
   filters: FilterState
   onCityChange: (city: string) => void
   onClearFilters: () => void
@@ -55,8 +52,6 @@ const particlesOptions: ISourceOptions = {
 export function Header({
   view,
   onViewChange,
-  theme,
-  onThemeToggle,
   filters,
   onCityChange,
   onClearFilters,
@@ -147,7 +142,6 @@ export function Header({
           </motion.button>
 
           <ViewToggle currentView={view} onChange={onViewChange} />
-          <ThemeToggle theme={theme} onToggle={onThemeToggle} />
         </div>
       </div>
     </header>

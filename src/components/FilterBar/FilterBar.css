@@ -145,14 +145,3 @@
   .filter-bar__select,
   .filter-bar__apply { transition: none; }
 }
-
-[data-theme="light"] .filter-bar--sheet {
-  background: rgba(255, 255, 255, 0.92);
-  border-top-color: rgba(0, 0, 0, 0.08);
-}
-
-[data-theme="light"] .filter-bar__select {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.12);
-  color: var(--color-text);
-}

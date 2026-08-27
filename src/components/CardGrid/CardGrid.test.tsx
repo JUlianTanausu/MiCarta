@@ -24,9 +24,10 @@ const twoRestaurants: Restaurant[] = [
 
 describe('CardGrid', () => {
   it('renders all restaurant cards', () => {
-    render(<CardGrid restaurants={twoRestaurants} />)
-    expect(screen.getByText('El Faro')).toBeInTheDocument()
-    expect(screen.getByText('Casa Lucio')).toBeInTheDocument()
+    const { container } = render(<CardGrid restaurants={twoRestaurants} />)
+    const names = container.querySelectorAll('.card__name')
+    expect(names[0]).toHaveTextContent('El Faro')
+    expect(names[1]).toHaveTextContent('Casa Lucio')
   })
 
   it('shows empty state when restaurants array is empty', () => {

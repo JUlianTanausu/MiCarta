@@ -8,7 +8,7 @@ const TAG_EMOJI: Record<string, string> = {
   pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷',
 }
 
-function RestaurantCover({ tags }: { tags: string[] }) {
+function RestaurantCover({ tags, name }: { tags: string[]; name: string }) {
   const emojis = tags
     .map(t => TAG_EMOJI[t.toLowerCase()])
     .filter(Boolean)
@@ -18,6 +18,7 @@ function RestaurantCover({ tags }: { tags: string[] }) {
   return (
     <div className="card__cover" aria-hidden="true">
       <div className="card__cover-emojis">{emojis.join('  ')}</div>
+      <div className="card__cover-name">{name}</div>
     </div>
   )
 }
@@ -27,7 +28,7 @@ interface RestaurantCardProps {
 }
 
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
-  const { name, cuisine: _cuisine, province, photos, warning, tags, googleMapsUrl, websiteUrl, personalNote } = restaurant
+  const { name, cuisine: _cuisine, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
   return (
@@ -48,7 +49,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
             loading="lazy"
           />
         ) : (
-          <RestaurantCover tags={tags} />
+          <RestaurantCover tags={tags} name={name} />
         )}
         <div className="card__image-gradient" />
         {warning && (
@@ -96,23 +97,6 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
             </svg>
             Google
           </motion.a>
-          {websiteUrl && (
-            <motion.a
-              href={websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="card__action-btn"
-              aria-label="Visitar web del restaurante"
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-              </svg>
-              Web
-            </motion.a>
-          )}
         </div>
       </div>
     </motion.article>

@@ -4,7 +4,6 @@ import { Header } from './components/Header/Header'
 import { CardGrid } from './components/CardGrid/CardGrid'
 import { MapView } from './components/MapView/MapView'
 import { SplashScreen } from './components/SplashScreen/SplashScreen'
-import { useTheme } from './hooks/useTheme'
 import { useFilters } from './hooks/useFilters'
 import type { Restaurant, ViewMode } from './types/Restaurant'
 import restaurantsData from './data/restaurants.json'
@@ -13,7 +12,6 @@ import './App.css'
 const restaurants: Restaurant[] = restaurantsData as Restaurant[]
 
 export default function App() {
-  const { theme, toggleTheme } = useTheme()
   const { filters, setCity, clearFilters, filteredRestaurants, availableCities } = useFilters(restaurants)
   const [view, setView] = useState<ViewMode>('cards')
   const [showSplash, setShowSplash] = useState<boolean>(() => {
@@ -32,8 +30,6 @@ export default function App() {
       <Header
         view={view}
         onViewChange={setView}
-        theme={theme}
-        onThemeToggle={toggleTheme}
         filters={filters}
         onCityChange={setCity}
         onClearFilters={clearFilters}
@@ -66,10 +62,7 @@ export default function App() {
               transition={{ duration: 0.2 }}
               className="app__view app__view--map"
             >
-              <MapView
-                restaurants={filteredRestaurants}
-                theme={theme}
-              />
+              <MapView restaurants={filteredRestaurants} />
             </motion.div>
           )}
         </AnimatePresence>

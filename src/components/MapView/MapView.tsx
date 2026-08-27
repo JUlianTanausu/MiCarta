@@ -3,23 +3,46 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { motion } from 'framer-motion'
 import { createMarkerIcon } from '../MapMarker/MapMarker'
-import type { Restaurant, Theme } from '../../types/Restaurant'
+import type { Restaurant } from '../../types/Restaurant'
 import './MapView.css'
 
 interface MapViewProps {
   restaurants: Restaurant[]
-  theme: Theme
+}
+
+const TAG_EMOJI: Record<string, string> = {
+  mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
+  carnes: '🥩', tapas: '🍢', sushi: '🍣', pizza: '🍕',
+  pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷',
+}
+
+function PopupCover({ restaurant }: { restaurant: Restaurant }) {
+  if (restaurant.photos.length > 0 && restaurant.photos[0]) {
+    return (
+      <img
+        src={restaurant.photos[0]}
+        alt={restaurant.name}
+        className="map-popup__img"
+      />
+    )
+  }
+  const emojis = restaurant.tags
+    .map(t => TAG_EMOJI[t.toLowerCase()])
+    .filter(Boolean)
+    .slice(0, 2)
+  if (!emojis.length) emojis.push('🍽️')
+  return (
+    <div className="map-popup__cover" aria-hidden="true">
+      <div className="map-popup__cover-emojis">{emojis.join('  ')}</div>
+      <div className="map-popup__cover-name">{restaurant.name}</div>
+    </div>
+  )
 }
 
 const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-
 const TILE_ATTRIBUTION =
   '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-
 const SPAIN_CENTER: [number, number] = [40.4168, -3.7038]
-
-const PLACEHOLDER_IMG =
-  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80'
 
 function MapResizer() {
   const map = useMap()
@@ -29,7 +52,7 @@ function MapResizer() {
   return null
 }
 
-export function MapView({ restaurants, theme: _theme }: MapViewProps) {
+export function MapView({ restaurants }: MapViewProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
 
   return (
@@ -61,17 +84,33 @@ export function MapView({ restaurants, theme: _theme }: MapViewProps) {
             }}
           >
             <Popup className="map-popup">
-              <div className="map-popup__content">
-                <img
-                  src={restaurant.photos[0] ?? PLACEHOLDER_IMG}
-                  alt={restaurant.name}
-                  className="map-popup__img"
-                />
-                <div className="map-popup__info">
-                  <h3 className="map-popup__name">{restaurant.name}</h3>
+              <div className="map-popup__card">
+                <div className="map-popup__image-wrapper">
+                  <PopupCover restaurant={restaurant} />
+                  {restaurant.warning && (
+                    <div className="map-popup__warning-chip">
+                      {restaurant.warning}
+                    </div>
+                  )}
+                </div>
+                <div className="map-popup__body">
+                  <p className="map-popup__name">{restaurant.name}</p>
                   <p className="map-popup__location">
-                    {restaurant.city} · {restaurant.cuisine}
+                    {restaurant.city} · {restaurant.province}
                   </p>
+                  <a
+                    href={restaurant.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="map-popup__btn"
+                    aria-label={`Ver ${restaurant.name} en Google Maps`}
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    Google Maps
+                  </a>
                 </div>
               </div>
             </Popup>
