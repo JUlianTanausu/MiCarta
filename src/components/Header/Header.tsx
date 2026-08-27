@@ -19,10 +19,8 @@ interface HeaderProps {
   onThemeToggle: () => void
   filters: FilterState
   onCityChange: (city: string) => void
-  onCuisineChange: (cuisine: string) => void
   onClearFilters: () => void
   availableCities: string[]
-  availableCuisines: string[]
   totalCount: number
   filteredCount: number
 }
@@ -69,7 +67,7 @@ export function Header({
   filteredCount,
 }: HeaderProps) {
   const [filterOpen, setFilterOpen] = useState(false)
-  const hasActiveFilters = !!(filters.city || filters.cuisine)
+  const hasActiveFilters = !!filters.city
 
   return (
     <header className="header">
@@ -104,10 +102,8 @@ export function Header({
         <FilterBar
           filters={filters}
           onCityChange={onCityChange}
-          onCuisineChange={onCuisineChange}
           onClear={onClearFilters}
           availableCities={availableCities}
-          availableCuisines={availableCuisines}
           isOpen={filterOpen}
           onClose={() => setFilterOpen(false)}
         />

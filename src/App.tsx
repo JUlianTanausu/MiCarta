@@ -14,7 +14,7 @@ const restaurants: Restaurant[] = restaurantsData as Restaurant[]
 
 export default function App() {
   const { theme, toggleTheme } = useTheme()
-  const { filters, setCity, setCuisine, clearFilters, filteredRestaurants, availableCities, availableCuisines } = useFilters(restaurants)
+  const { filters, setCity, clearFilters, filteredRestaurants, availableCities } = useFilters(restaurants)
   const [view, setView] = useState<ViewMode>('cards')
   const [showSplash, setShowSplash] = useState<boolean>(() => {
     return true
@@ -36,10 +36,8 @@ export default function App() {
         onThemeToggle={toggleTheme}
         filters={filters}
         onCityChange={setCity}
-        onCuisineChange={setCuisine}
         onClearFilters={clearFilters}
         availableCities={availableCities}
-        availableCuisines={availableCuisines}
         totalCount={restaurants.length}
         filteredCount={filteredRestaurants.length}
       />

@@ -26,5 +26,4 @@ export type Theme = 'dark' | 'light'
 
 export interface FilterState {
   city: string
-  cuisine: string
 }

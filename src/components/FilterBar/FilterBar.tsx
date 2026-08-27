@@ -5,19 +5,16 @@ import './FilterBar.css'
 interface FilterBarProps {
   filters: FilterState
   onCityChange: (city: string) => void
-  onCuisineChange: (cuisine: string) => void
   onClear: () => void
   availableCities: string[]
-  availableCuisines: string[]
   isOpen: boolean
   onClose: () => void
 }
 
-const hasActiveFilters = (filters: FilterState) => !!(filters.city || filters.cuisine)
+const hasActiveFilters = (filters: FilterState) => !!filters.city
 
 export function FilterBar({
-  filters, onCityChange, onCuisineChange, onClear,
-  availableCities, availableCuisines, isOpen, onClose,
+  filters, onCityChange, onClear, availableCities, isOpen, onClose,
 }: FilterBarProps) {
   const active = hasActiveFilters(filters)
 
@@ -28,9 +25,7 @@ export function FilterBar({
         <FilterSelects
           filters={filters}
           onCityChange={onCityChange}
-          onCuisineChange={onCuisineChange}
           availableCities={availableCities}
-          availableCuisines={availableCuisines}
           idPrefix="desktop"
         />
         {active && (
@@ -63,9 +58,7 @@ export function FilterBar({
               <FilterSelects
                 filters={filters}
                 onCityChange={onCityChange}
-                onCuisineChange={onCuisineChange}
                 availableCities={availableCities}
-                availableCuisines={availableCuisines}
                 idPrefix="sheet"
               />
               <div className="filter-bar__actions">
@@ -89,17 +82,15 @@ export function FilterBar({
 interface FilterSelectsProps {
   filters: FilterState
   onCityChange: (city: string) => void
-  onCuisineChange: (cuisine: string) => void
   availableCities: string[]
-  availableCuisines: string[]
   idPrefix: string
 }
 
-function FilterSelects({ filters, onCityChange, onCuisineChange, availableCities, availableCuisines, idPrefix }: FilterSelectsProps) {
+function FilterSelects({ filters, onCityChange, availableCities, idPrefix }: FilterSelectsProps) {
   return (
     <div className="filter-bar__selects">
       <div className="filter-bar__group">
-        <label className="filter-bar__label" htmlFor={`${idPrefix}-city`}>Ciudad</label>
+        <label className="filter-bar__label" htmlFor={`${idPrefix}-city`}>Provincia</label>
         <select
           id={`${idPrefix}-city`}
           className="filter-bar__select"
@@ -109,21 +100,6 @@ function FilterSelects({ filters, onCityChange, onCuisineChange, availableCities
           <option value="">Todas</option>
           {availableCities.map(city => (
             <option key={city} value={city}>{city}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="filter-bar__group">
-        <label className="filter-bar__label" htmlFor={`${idPrefix}-cuisine`}>Cocina</label>
-        <select
-          id={`${idPrefix}-cuisine`}
-          className="filter-bar__select"
-          value={filters.cuisine}
-          onChange={e => onCuisineChange(e.target.value)}
-        >
-          <option value="">Todas</option>
-          {availableCuisines.map(cuisine => (
-            <option key={cuisine} value={cuisine}>{cuisine}</option>
           ))}
         </select>
       </div>

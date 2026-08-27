@@ -4,17 +4,14 @@ import { FilterBar } from './FilterBar'
 import type { FilterState } from '../../types/Restaurant'
 
 const CITIES = ['Madrid', 'Barcelona', 'Sevilla']
-const CUISINES = ['Española', 'Italiana', 'Japonesa']
-const EMPTY_FILTERS: FilterState = { city: '', cuisine: '' }
+const EMPTY_FILTERS: FilterState = { city: '' }
 
 function makeProps(overrides: Partial<Parameters<typeof FilterBar>[0]> = {}) {
   return {
     filters: EMPTY_FILTERS,
     onCityChange: vi.fn(),
-    onCuisineChange: vi.fn(),
     onClear: vi.fn(),
     availableCities: CITIES,
-    availableCuisines: CUISINES,
     isOpen: false,
     onClose: vi.fn(),
     ...overrides,
@@ -22,24 +19,16 @@ function makeProps(overrides: Partial<Parameters<typeof FilterBar>[0]> = {}) {
 }
 
 describe('FilterBar — desktop bar', () => {
-  it('renders city and cuisine selects', () => {
+  it('renders province select', () => {
     render(<FilterBar {...makeProps()} />)
-    expect(screen.getByLabelText('Ciudad')).toBeInTheDocument()
-    expect(screen.getByLabelText('Cocina')).toBeInTheDocument()
+    expect(screen.getByLabelText('Provincia')).toBeInTheDocument()
   })
 
   it('populates city options including "Todas"', () => {
     render(<FilterBar {...makeProps()} />)
-    const citySelect = screen.getByLabelText('Ciudad')
-    const options = Array.from((citySelect as HTMLSelectElement).options).map(o => o.value)
+    const select = screen.getByLabelText('Provincia')
+    const options = Array.from((select as HTMLSelectElement).options).map(o => o.value)
     expect(options).toEqual(['', ...CITIES])
-  })
-
-  it('populates cuisine options including "Todas"', () => {
-    render(<FilterBar {...makeProps()} />)
-    const cuisineSelect = screen.getByLabelText('Cocina')
-    const options = Array.from((cuisineSelect as HTMLSelectElement).options).map(o => o.value)
-    expect(options).toEqual(['', ...CUISINES])
   })
 
   it('does not show "Limpiar" button when no filters are active', () => {
@@ -48,18 +37,13 @@ describe('FilterBar — desktop bar', () => {
   })
 
   it('shows "Limpiar" button when city filter is active', () => {
-    render(<FilterBar {...makeProps({ filters: { city: 'Madrid', cuisine: '' } })} />)
-    expect(screen.getByText('Limpiar')).toBeInTheDocument()
-  })
-
-  it('shows "Limpiar" button when cuisine filter is active', () => {
-    render(<FilterBar {...makeProps({ filters: { city: '', cuisine: 'Italiana' } })} />)
+    render(<FilterBar {...makeProps({ filters: { city: 'Madrid' } })} />)
     expect(screen.getByText('Limpiar')).toBeInTheDocument()
   })
 
   it('calls onClear when "Limpiar" is clicked', async () => {
     const onClear = vi.fn()
-    render(<FilterBar {...makeProps({ filters: { city: 'Madrid', cuisine: '' }, onClear })} />)
+    render(<FilterBar {...makeProps({ filters: { city: 'Madrid' }, onClear })} />)
     await userEvent.click(screen.getByText('Limpiar'))
     expect(onClear).toHaveBeenCalledTimes(1)
   })
@@ -67,15 +51,8 @@ describe('FilterBar — desktop bar', () => {
   it('calls onCityChange with the selected value', async () => {
     const onCityChange = vi.fn()
     render(<FilterBar {...makeProps({ onCityChange })} />)
-    await userEvent.selectOptions(screen.getByLabelText('Ciudad'), 'Barcelona')
+    await userEvent.selectOptions(screen.getByLabelText('Provincia'), 'Barcelona')
     expect(onCityChange).toHaveBeenCalledWith('Barcelona')
-  })
-
-  it('calls onCuisineChange with the selected value', async () => {
-    const onCuisineChange = vi.fn()
-    render(<FilterBar {...makeProps({ onCuisineChange })} />)
-    await userEvent.selectOptions(screen.getByLabelText('Cocina'), 'Japonesa')
-    expect(onCuisineChange).toHaveBeenCalledWith('Japonesa')
   })
 })
 
@@ -101,7 +78,7 @@ describe('FilterBar — mobile bottom sheet', () => {
   })
 
   it('shows "Limpiar filtros" in the sheet when a filter is active', () => {
-    render(<FilterBar {...makeProps({ isOpen: true, filters: { city: 'Sevilla', cuisine: '' } })} />)
+    render(<FilterBar {...makeProps({ isOpen: true, filters: { city: 'Sevilla' } })} />)
     expect(screen.getByText('Limpiar filtros')).toBeInTheDocument()
   })
 
@@ -117,7 +94,7 @@ describe('FilterBar — mobile bottom sheet', () => {
     const onClose = vi.fn()
     render(
       <FilterBar
-        {...makeProps({ isOpen: true, filters: { city: 'Madrid', cuisine: '' }, onClear, onClose })}
+        {...makeProps({ isOpen: true, filters: { city: 'Madrid' }, onClear, onClose })}
       />
     )
     await userEvent.click(screen.getByText('Limpiar filtros'))
@@ -128,7 +105,6 @@ describe('FilterBar — mobile bottom sheet', () => {
   it('calls onClose when the overlay is clicked', async () => {
     const onClose = vi.fn()
     render(<FilterBar {...makeProps({ isOpen: true, onClose })} />)
-    // The overlay sits behind the sheet; grab it by its class
     const overlay = document.querySelector('.filter-bar__overlay') as HTMLElement
     expect(overlay).toBeInTheDocument()
     await userEvent.click(overlay)

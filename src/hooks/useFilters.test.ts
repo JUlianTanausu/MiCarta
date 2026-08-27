@@ -55,22 +55,6 @@ it('filters by city', () => {
   expect(result.current.filteredRestaurants).toHaveLength(2)
 })
 
-it('filters by cuisine', () => {
-  const { result } = renderHook(() => useFilters(mockRestaurants))
-  act(() => result.current.setCuisine('Mariscos'))
-  expect(result.current.filteredRestaurants).toHaveLength(2)
-})
-
-it('combines city and cuisine filters', () => {
-  const { result } = renderHook(() => useFilters(mockRestaurants))
-  act(() => {
-    result.current.setCity('Cádiz')
-    result.current.setCuisine('Mariscos')
-  })
-  expect(result.current.filteredRestaurants).toHaveLength(1)
-  expect(result.current.filteredRestaurants[0].id).toBe('r3')
-})
-
 it('clearFilters resets all filters', () => {
   const { result } = renderHook(() => useFilters(mockRestaurants))
   act(() => {
@@ -83,9 +67,4 @@ it('clearFilters resets all filters', () => {
 it('provides sorted unique cities', () => {
   const { result } = renderHook(() => useFilters(mockRestaurants))
   expect(result.current.availableCities).toEqual(['Barcelona', 'Cádiz'])
-})
-
-it('provides sorted unique cuisines', () => {
-  const { result } = renderHook(() => useFilters(mockRestaurants))
-  expect(result.current.availableCuisines).toEqual(['Andaluza', 'Mariscos'])
 })

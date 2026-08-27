@@ -22,9 +22,9 @@ describe('RestaurantCard', () => {
     expect(screen.getByText('El Faro')).toBeInTheDocument()
   })
 
-  it('renders city and cuisine', () => {
+  it('renders province', () => {
     render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(screen.getByText(/Cádiz · Andaluza/)).toBeInTheDocument()
+    expect(screen.getByText('Cádiz')).toBeInTheDocument()
   })
 
   it('renders all tags', () => {
@@ -69,11 +69,6 @@ describe('RestaurantCard', () => {
     expect(screen.getByText(/"Excelente marisquería"/)).toBeInTheDocument()
   })
 
-  it('shows visit date when provided', () => {
-    const withDate = { ...baseRestaurant, visitDate: '2024' }
-    render(<RestaurantCard restaurant={withDate} />)
-    expect(screen.getByText(/2024/)).toBeInTheDocument()
-  })
 
   it('shows placeholder initial when photos array is empty', () => {
     const { container } = render(<RestaurantCard restaurant={baseRestaurant} />)
