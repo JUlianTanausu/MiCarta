@@ -68,9 +68,12 @@ export function Header({
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    // The scrollable container is .app__main, not the document root
+    const scroller = document.querySelector('.app__main') as HTMLElement | null
+    if (!scroller) return
+    const onScroll = () => setScrolled(scroller.scrollTop > 30)
+    scroller.addEventListener('scroll', onScroll, { passive: true })
+    return () => scroller.removeEventListener('scroll', onScroll)
   }, [])
 
   const hasActiveFilters = !!filters.city

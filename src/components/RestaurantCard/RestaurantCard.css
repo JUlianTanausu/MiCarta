@@ -198,8 +198,29 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card,
+  .card__image,
   .card__action-btn,
   .card__action-btn--primary {
     transition: none;
   }
+  .card:hover .card__image {
+    transform: none;
+  }
+}
+
+[data-theme="light"] .card {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+[data-theme="light"] .card__cover {
+  background: linear-gradient(145deg,
+    rgba(240, 242, 248, 0.9) 0%,
+    rgba(26, 158, 146, 0.12) 60%,
+    rgba(196, 77, 34, 0.06) 100%
+  );
+}
+
+[data-theme="light"] .card__image-gradient {
+  background: linear-gradient(to top, rgba(240, 242, 248, 0.5) 0%, transparent 50%);
 }

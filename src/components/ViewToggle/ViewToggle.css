@@ -39,3 +39,12 @@
 @media (prefers-reduced-motion: reduce) {
   .view-toggle__btn { transition: none; }
 }
+
+[data-theme="light"] .view-toggle {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .view-toggle__btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
