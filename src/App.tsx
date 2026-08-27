@@ -51,7 +51,7 @@ export default function App() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="app__view"
+              className="app__view app__view--cards"
             >
               <CardGrid
                 restaurants={filteredRestaurants}
