@@ -6,7 +6,6 @@ import './CardGrid.css'
 
 interface CardGridProps {
   restaurants: Restaurant[]
-  onCardClick: (restaurant: Restaurant) => void
 }
 
 const containerVariants: Variants = {
@@ -29,7 +28,7 @@ const itemVariants: Variants = {
   },
 }
 
-export function CardGrid({ restaurants, onCardClick }: CardGridProps) {
+export function CardGrid({ restaurants }: CardGridProps) {
   if (restaurants.length === 0) {
     return (
       <motion.div
@@ -62,7 +61,6 @@ export function CardGrid({ restaurants, onCardClick }: CardGridProps) {
           >
             <RestaurantCard
               restaurant={restaurant}
-              onClick={onCardClick}
             />
           </motion.div>
         ))}

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { CardGrid } from './CardGrid'
 import type { Restaurant } from '../../types/Restaurant'
 
@@ -24,42 +24,28 @@ const twoRestaurants: Restaurant[] = [
 
 describe('CardGrid', () => {
   it('renders all restaurant cards', () => {
-    render(<CardGrid restaurants={twoRestaurants} onCardClick={() => {}} />)
+    render(<CardGrid restaurants={twoRestaurants} />)
     expect(screen.getByText('El Faro')).toBeInTheDocument()
     expect(screen.getByText('Casa Lucio')).toBeInTheDocument()
   })
 
   it('shows empty state when restaurants array is empty', () => {
-    render(<CardGrid restaurants={[]} onCardClick={() => {}} />)
+    render(<CardGrid restaurants={[]} />)
     expect(screen.getByText('No hay restaurantes que coincidan con los filtros.')).toBeInTheDocument()
   })
 
   it('shows plate emoji in empty state', () => {
-    render(<CardGrid restaurants={[]} onCardClick={() => {}} />)
+    render(<CardGrid restaurants={[]} />)
     expect(screen.getByText('🍽️')).toBeInTheDocument()
   })
 
   it('does not show empty state when there are restaurants', () => {
-    render(<CardGrid restaurants={twoRestaurants} onCardClick={() => {}} />)
+    render(<CardGrid restaurants={twoRestaurants} />)
     expect(screen.queryByText('No hay restaurantes que coincidan con los filtros.')).not.toBeInTheDocument()
   })
 
-  it('calls onCardClick with the correct restaurant when a card is clicked', () => {
-    const handleClick = vi.fn()
-    render(<CardGrid restaurants={twoRestaurants} onCardClick={handleClick} />)
-    fireEvent.click(screen.getByRole('button', { name: /ver detalle de el faro/i }))
-    expect(handleClick).toHaveBeenCalledWith(twoRestaurants[0])
-  })
-
-  it('calls onCardClick for the second card independently', () => {
-    const handleClick = vi.fn()
-    render(<CardGrid restaurants={twoRestaurants} onCardClick={handleClick} />)
-    fireEvent.click(screen.getByRole('button', { name: /ver detalle de casa lucio/i }))
-    expect(handleClick).toHaveBeenCalledWith(twoRestaurants[1])
-  })
-
   it('renders one card when restaurants has a single entry', () => {
-    render(<CardGrid restaurants={[makeRestaurant()]} onCardClick={() => {}} />)
-    expect(screen.getAllByRole('button')).toHaveLength(1)
+    render(<CardGrid restaurants={[makeRestaurant()]} />)
+    expect(screen.getAllByRole('article')).toHaveLength(1)
   })
 })

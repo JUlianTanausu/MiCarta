@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { useState, useEffect } from 'react'
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { motion } from 'framer-motion'
 import { createMarkerIcon } from '../MapMarker/MapMarker'
@@ -9,7 +9,6 @@ import './MapView.css'
 interface MapViewProps {
   restaurants: Restaurant[]
   theme: Theme
-  onMarkerClick: (restaurant: Restaurant) => void
 }
 
 const TILE_URLS: Record<Theme, string> = {
@@ -25,7 +24,15 @@ const SPAIN_CENTER: [number, number] = [40.4168, -3.7038]
 const PLACEHOLDER_IMG =
   'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=400&q=80'
 
-export function MapView({ restaurants, theme, onMarkerClick }: MapViewProps) {
+function MapResizer() {
+  const map = useMap()
+  useEffect(() => {
+    setTimeout(() => map.invalidateSize(), 350)
+  }, [map])
+  return null
+}
+
+export function MapView({ restaurants, theme }: MapViewProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
 
   return (
@@ -41,6 +48,7 @@ export function MapView({ restaurants, theme, onMarkerClick }: MapViewProps) {
         className="map-view__container"
         zoomControl={false}
       >
+        <MapResizer />
         <TileLayer url={TILE_URLS[theme]} attribution={TILE_ATTRIBUTION} />
 
         {restaurants.map(restaurant => (
@@ -67,12 +75,6 @@ export function MapView({ restaurants, theme, onMarkerClick }: MapViewProps) {
                   <p className="map-popup__location">
                     {restaurant.city} · {restaurant.cuisine}
                   </p>
-                  <button
-                    className="map-popup__btn"
-                    onClick={() => onMarkerClick(restaurant)}
-                  >
-                    Ver detalle
-                  </button>
                 </div>
               </div>
             </Popup>

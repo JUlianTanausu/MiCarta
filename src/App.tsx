@@ -3,7 +3,6 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import { Header } from './components/Header/Header'
 import { CardGrid } from './components/CardGrid/CardGrid'
 import { MapView } from './components/MapView/MapView'
-import { RestaurantModal } from './components/RestaurantModal/RestaurantModal'
 import { useTheme } from './hooks/useTheme'
 import { useFilters } from './hooks/useFilters'
 import type { Restaurant, ViewMode } from './types/Restaurant'
@@ -16,7 +15,6 @@ export default function App() {
   const { theme, toggleTheme } = useTheme()
   const { filters, setCity, setCuisine, clearFilters, filteredRestaurants, availableCities, availableCuisines } = useFilters(restaurants)
   const [view, setView] = useState<ViewMode>('cards')
-  const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null)
 
   return (
     <MotionConfig reducedMotion="user">
@@ -49,7 +47,6 @@ export default function App() {
             >
               <CardGrid
                 restaurants={filteredRestaurants}
-                onCardClick={setSelectedRestaurant}
               />
             </motion.div>
           ) : (
@@ -64,21 +61,11 @@ export default function App() {
               <MapView
                 restaurants={filteredRestaurants}
                 theme={theme}
-                onMarkerClick={setSelectedRestaurant}
               />
             </motion.div>
           )}
         </AnimatePresence>
       </main>
-
-      <AnimatePresence>
-        {selectedRestaurant && (
-          <RestaurantModal
-            restaurant={selectedRestaurant}
-            onClose={() => setSelectedRestaurant(null)}
-          />
-        )}
-      </AnimatePresence>
     </div>
     </MotionConfig>
   )
