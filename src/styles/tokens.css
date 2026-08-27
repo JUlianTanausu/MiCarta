@@ -1,20 +1,20 @@
 /* ── Tema dark (default) ── */
 :root,
 [data-theme="dark"] {
-  --color-bg:          #0D0D0D;
-  --color-surface:     #1A1A1A;
-  --color-surface-2:   #252525;
+  --color-bg:          #14110D;
+  --color-surface:     #1F1B16;
+  --color-surface-2:   #2A2520;
   --color-primary:     #D4582A;
   --color-primary-dim: rgba(212, 88, 42, 0.15);
   --color-accent:      #2E9B9B;
   --color-text:        #F5F0E8;
   --color-text-muted:  #8A8480;
-  --color-border:      #2E2E2E;
-  --color-overlay:     rgba(0, 0, 0, 0.85);
+  --color-border:      #332E28;
+  --color-overlay:     rgba(10, 8, 6, 0.88);
 
-  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.6);
-  --shadow-card-hover: 0 8px 40px rgba(212, 88, 42, 0.25);
-  --shadow-modal:      0 24px 80px rgba(0, 0, 0, 0.8);
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.55);
+  --shadow-card-hover: 0 8px 40px rgba(212, 88, 42, 0.28);
+  --shadow-modal:      0 24px 80px rgba(0, 0, 0, 0.75);
 }
 
 /* ── Tema light ── */

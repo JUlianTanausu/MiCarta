@@ -17,7 +17,7 @@ export default function App() {
   const { filters, setCity, setCuisine, clearFilters, filteredRestaurants, availableCities, availableCuisines } = useFilters(restaurants)
   const [view, setView] = useState<ViewMode>('cards')
   const [showSplash, setShowSplash] = useState<boolean>(() => {
-    return !sessionStorage.getItem('micarta-splash-shown')
+    return true
   })
 
   const handleSplashDone = () => {
