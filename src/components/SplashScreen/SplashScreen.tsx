@@ -36,11 +36,25 @@ export function SplashScreen({ onDone }: SplashScreenProps) {
           />
           <motion.h1
             className="splash__title"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: 'easeOut', delay: 0.55 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.04, delayChildren: 0.55 } },
+            }}
           >
-            miCarta
+            {'miCarta'.split('').map((char, i) => (
+              <motion.span
+                key={i}
+                className={i < 2 ? 'splash__title-mi' : 'splash__title-carta'}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 20 } },
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </motion.h1>
           <motion.p
             className="splash__tagline"
