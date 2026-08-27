@@ -59,10 +59,8 @@ export function Header({
   onThemeToggle,
   filters,
   onCityChange,
-  onCuisineChange,
   onClearFilters,
   availableCities,
-  availableCuisines,
   totalCount,
   filteredCount,
 }: HeaderProps) {
@@ -90,7 +88,10 @@ export function Header({
             transition={{ type: 'spring', stiffness: 300 }}
           />
           <div className="header__brand-text">
-            <span className="header__title">miCarta</span>
+            <span className="header__title">
+              <span className="header__title-mi">mi</span>
+              <span className="header__title-carta">Carta</span>
+            </span>
             <span className="header__subtitle">
               {filteredCount < totalCount
                 ? `${filteredCount} de ${totalCount} restaurantes`

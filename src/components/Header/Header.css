@@ -44,6 +44,12 @@
   border-radius: var(--radius-full);
   object-fit: cover;
   border: 2px solid var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-accent), 0 0 16px rgba(46, 155, 155, 0.2);
+  transition: box-shadow var(--transition-base);
+}
+
+.header__logo:hover {
+  box-shadow: 0 0 0 1px var(--color-accent), 0 0 28px rgba(46, 155, 155, 0.45), 0 0 8px rgba(212, 88, 42, 0.3);
 }
 
 .header__brand-text {
@@ -55,8 +61,15 @@
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: var(--font-bold);
-  color: var(--color-text);
   line-height: 1.1;
+}
+
+.header__title-mi {
+  color: var(--color-text);
+}
+
+.header__title-carta {
+  color: var(--color-accent);
 }
 
 .header__subtitle {
