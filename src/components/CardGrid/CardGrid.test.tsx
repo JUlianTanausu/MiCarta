@@ -47,6 +47,6 @@ describe('CardGrid', () => {
 
   it('renders one card when restaurants has a single entry', () => {
     render(<CardGrid restaurants={[makeRestaurant()]} />)
-    expect(screen.getAllByRole('article')).toHaveLength(1)
+    expect(screen.getAllByRole('link')).toHaveLength(1)
   })
 })

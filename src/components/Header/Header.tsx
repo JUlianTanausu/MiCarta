@@ -4,8 +4,7 @@ import Particles, { ParticlesProvider } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 import type { Engine, ISourceOptions } from '@tsparticles/engine'
 import { ViewToggle } from '../ViewToggle/ViewToggle'
-import { FilterBar } from '../FilterBar/FilterBar'
-import type { ViewMode, FilterState } from '../../types/Restaurant'
+import type { ViewMode } from '../../types/Restaurant'
 import logoSrc from '../../assets/logo.png'
 import './Header.css'
 
@@ -14,12 +13,7 @@ const initEngine = (engine: Engine): Promise<void> => loadSlim(engine)
 interface HeaderProps {
   view: ViewMode
   onViewChange: (v: ViewMode) => void
-  filters: FilterState
-  onCityChange: (city: string) => void
-  onClearFilters: () => void
-  availableCities: string[]
   totalCount: number
-  filteredCount: number
 }
 
 const particlesOptions: ISourceOptions = {
@@ -49,17 +43,7 @@ const particlesOptions: ISourceOptions = {
   detectRetina: true,
 }
 
-export function Header({
-  view,
-  onViewChange,
-  filters,
-  onCityChange,
-  onClearFilters,
-  availableCities,
-  totalCount,
-  filteredCount,
-}: HeaderProps) {
-  const [filterOpen, setFilterOpen] = useState(false)
+export function Header({ view, onViewChange, totalCount }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -70,8 +54,6 @@ export function Header({
     scroller.addEventListener('scroll', onScroll, { passive: true })
     return () => scroller.removeEventListener('scroll', onScroll)
   }, [])
-
-  const hasActiveFilters = !!filters.city
 
   return (
     <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
@@ -100,47 +82,12 @@ export function Header({
               <span className="header__title-carta">Carta</span>
             </span>
             <span className="header__subtitle">
-              {filteredCount < totalCount
-                ? `${filteredCount} de ${totalCount} restaurantes`
-                : `${totalCount} restaurante${totalCount !== 1 ? 's' : ''}`}
+              {totalCount} restaurante{totalCount !== 1 ? 's' : ''}
             </span>
           </div>
         </div>
 
-        <FilterBar
-          filters={filters}
-          onCityChange={onCityChange}
-          onClear={onClearFilters}
-          availableCities={availableCities}
-          isOpen={filterOpen}
-          onClose={() => setFilterOpen(false)}
-        />
-
         <div className="header__controls">
-          <motion.button
-            className={`header__filter-btn${hasActiveFilters ? ' header__filter-btn--active' : ''}`}
-            onClick={() => setFilterOpen(true)}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Abrir filtros"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <line x1="4" y1="6" x2="20" y2="6" />
-              <line x1="8" y1="12" x2="16" y2="12" />
-              <line x1="11" y1="18" x2="13" y2="18" />
-            </svg>
-            {hasActiveFilters && <span className="header__filter-dot" aria-hidden="true" />}
-          </motion.button>
-
           <ViewToggle currentView={view} onChange={onViewChange} />
         </div>
       </div>

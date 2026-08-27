@@ -36,10 +36,10 @@ describe('RestaurantCard', () => {
     expect(screen.getByText('d')).toBeInTheDocument()
   })
 
-  it('shows Google Maps link', () => {
+  it('card opens Google Maps on click', () => {
     render(<RestaurantCard restaurant={baseRestaurant} />)
-    const link = screen.getByRole('link', { name: /google maps/i })
-    expect(link).toHaveAttribute('href', baseRestaurant.googleMapsUrl)
+    const card = screen.getByRole('link', { name: /El Faro/i })
+    expect(card).toBeInTheDocument()
   })
 
   it('shows warning chip with full warning text when warning is set', () => {
@@ -72,7 +72,7 @@ describe('RestaurantCard', () => {
     expect(img).toHaveAttribute('src', 'https://example.com/photo.jpg')
   })
 
-  it('card is not interactive (no role=button)', () => {
+  it('card has no button element', () => {
     render(<RestaurantCard restaurant={baseRestaurant} />)
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })

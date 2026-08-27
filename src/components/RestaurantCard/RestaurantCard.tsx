@@ -4,7 +4,7 @@ import './RestaurantCard.css'
 
 const TAG_EMOJI: Record<string, string> = {
   mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
-  carnes: '🥩', tapas: '🍢', sushi: '🍣', pizza: '🍕',
+  carnes: '🥩', brasa: '🔥', tapas: '🍢', sushi: '🍣', pizza: '🍕',
   pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷',
 }
 
@@ -37,7 +37,13 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -6, scale: 1.015 }}
+      whileTap={{ scale: 0.98 }}
       transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+      onClick={() => window.open(googleMapsUrl, '_blank', 'noopener,noreferrer')}
+      role="link"
+      tabIndex={0}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') window.open(googleMapsUrl, '_blank', 'noopener,noreferrer') }}
+      aria-label={`Ver ${name} en Google Maps`}
     >
       {/* Photo / Placeholder */}
       <div className="card__image-wrapper">
@@ -83,20 +89,13 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
         )}
 
         <div className="card__actions">
-          <motion.a
-            href={googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card__action-btn card__action-btn--primary"
-            aria-label="Ver en Google Maps"
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <span className="card__action-hint">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
-            Google
-          </motion.a>
+            Ver en Google Maps
+          </span>
         </div>
       </div>
     </motion.article>

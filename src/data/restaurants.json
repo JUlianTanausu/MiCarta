@@ -5,14 +5,20 @@
     "cuisine": "Mariscos",
     "city": "Riumar",
     "province": "Tarragona",
-    "coordinates": { "lat": 40.71341348769691, "lng": 0.8348428817786689 },
+    "coordinates": {
+      "lat": 40.71341348769691,
+      "lng": 0.8348428817786689
+    },
     "address": "Illa de Buda, s/n, 43580 Riumar, Tarragona",
-    "googleMapsUrl": "https://share.google/OYajRcFqm4Tk9by8E",
+    "googleMapsUrl": "https://maps.app.goo.gl/n4JSSe62CUiNs7ah6",
     "websiteUrl": "https://restaurantnuri.com/",
     "photos": [],
     "warning": "Mejor reservar, sobre todo en fin de semana",
     "personalNote": "Vino de la casa, mejillones con salsa romesco y paella de la casa son espectaculares.",
-    "tags": ["arroces", "mariscos"],
+    "tags": [
+      "arroces",
+      "mariscos"
+    ],
     "visitDate": "2024"
   },
   {
@@ -21,12 +27,18 @@
     "cuisine": "Asador",
     "city": "Chantada",
     "province": "Lugo",
-    "coordinates": { "lat": 42.61409488923922, "lng": -7.683113302799566 },
+    "coordinates": {
+      "lat": 42.61409488923922,
+      "lng": -7.683113302799566
+    },
     "address": "Carretera Vieja, Km. 136, 27540 Chantada, Lugo",
-    "googleMapsUrl": "https://share.google/TN6N7iNQJS7ixhnJZ",
+    "googleMapsUrl": "https://maps.app.goo.gl/Jyg1mtEEf3RZWbQw7",
     "photos": [],
     "warning": "Reservar y solo efectivo",
     "personalNote": "Churrasco increíble.",
-    "tags": ["carnes"]
+    "tags": [
+      "carnes",
+      "brasa"
+    ]
   }
 ]
