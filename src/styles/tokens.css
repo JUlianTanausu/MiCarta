@@ -1,8 +1,8 @@
 :root,
 [data-theme="dark"] {
   --color-bg:          #080A0F;
-  --color-surface:     #131620;
-  --color-surface-2:   #1C1F2E;
+  --color-surface:     rgba(255, 255, 255, 0.05);
+  --color-surface-2:   rgba(255, 255, 255, 0.08);
   --color-primary:     #2EC4B6;
   --color-primary-dim: rgba(46, 196, 182, 0.12);
   --color-warm:        #D4582A;
@@ -10,7 +10,7 @@
   --color-accent:      #2EC4B6;
   --color-text:        #F0EEF8;
   --color-text-muted:  #7A7D8E;
-  --color-border:      #252840;
+  --color-border:      rgba(255, 255, 255, 0.08);
   --color-overlay:     rgba(6, 8, 14, 0.85);
   --aurora-1:          rgba(46, 196, 182, 0.18);
   --aurora-2:          rgba(180, 100, 40, 0.10);
@@ -31,7 +31,7 @@
   --color-accent:      #1A9E92;
   --color-text:        #1A1410;
   --color-text-muted:  #6B6460;
-  --color-border:      #E0E3EF;
+  --color-border:      rgba(0, 0, 0, 0.1);
   --color-overlay:     rgba(0, 0, 0, 0.6);
   --aurora-1:          rgba(26, 158, 146, 0.12);
   --aurora-2:          rgba(196, 77, 34, 0.07);

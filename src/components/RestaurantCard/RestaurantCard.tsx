@@ -2,12 +2,32 @@ import { motion } from 'framer-motion'
 import type { Restaurant } from '../../types/Restaurant'
 import './RestaurantCard.css'
 
+const TAG_EMOJI: Record<string, string> = {
+  mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
+  carnes: '🥩', tapas: '🍢', sushi: '🍣', pizza: '🍕',
+  pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷',
+}
+
+function RestaurantCover({ tags }: { tags: string[] }) {
+  const emojis = tags
+    .map(t => TAG_EMOJI[t.toLowerCase()])
+    .filter(Boolean)
+    .slice(0, 3)
+  if (!emojis.length) emojis.push('🍽️')
+
+  return (
+    <div className="card__cover" aria-hidden="true">
+      <div className="card__cover-emojis">{emojis.join('  ')}</div>
+    </div>
+  )
+}
+
 interface RestaurantCardProps {
   restaurant: Restaurant
 }
 
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
-  const { name, cuisine, province, photos, warning, tags, googleMapsUrl, websiteUrl, personalNote } = restaurant
+  const { name, cuisine: _cuisine, province, photos, warning, tags, googleMapsUrl, websiteUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
   return (
@@ -15,8 +35,8 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       className="card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4, scale: 1.01 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      whileHover={{ y: -6, scale: 1.015 }}
+      transition={{ type: 'spring', stiffness: 320, damping: 22 }}
     >
       {/* Photo / Placeholder */}
       <div className="card__image-wrapper">
@@ -28,9 +48,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
             loading="lazy"
           />
         ) : (
-          <div className="card__image-placeholder" aria-hidden="true">
-            <span className="card__placeholder-initial">{name.charAt(0)}</span>
-          </div>
+          <RestaurantCover tags={tags} />
         )}
         <div className="card__image-gradient" />
         {warning && (
@@ -64,26 +82,28 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
         )}
 
         <div className="card__actions">
-          <a
+          <motion.a
             href={googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="card__action-btn card__action-btn--primary"
             aria-label="Ver en Google Maps"
+            whileTap={{ scale: 0.95 }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
             Google
-          </a>
+          </motion.a>
           {websiteUrl && (
-            <a
+            <motion.a
               href={websiteUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="card__action-btn"
               aria-label="Visitar web del restaurante"
+              whileTap={{ scale: 0.95 }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10"/>
@@ -91,7 +111,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
               </svg>
               Web
-            </a>
+            </motion.a>
           )}
         </div>
       </div>
