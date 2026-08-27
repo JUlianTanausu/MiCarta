@@ -3,6 +3,7 @@ import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import { Header } from './components/Header/Header'
 import { CardGrid } from './components/CardGrid/CardGrid'
 import { MapView } from './components/MapView/MapView'
+import { SplashScreen } from './components/SplashScreen/SplashScreen'
 import { useTheme } from './hooks/useTheme'
 import { useFilters } from './hooks/useFilters'
 import type { Restaurant, ViewMode } from './types/Restaurant'
@@ -15,10 +16,19 @@ export default function App() {
   const { theme, toggleTheme } = useTheme()
   const { filters, setCity, setCuisine, clearFilters, filteredRestaurants, availableCities, availableCuisines } = useFilters(restaurants)
   const [view, setView] = useState<ViewMode>('cards')
+  const [showSplash, setShowSplash] = useState<boolean>(() => {
+    return !sessionStorage.getItem('micarta-splash-shown')
+  })
+
+  const handleSplashDone = () => {
+    sessionStorage.setItem('micarta-splash-shown', '1')
+    setShowSplash(false)
+  }
 
   return (
     <MotionConfig reducedMotion="user">
-    <div className="app">
+      {showSplash && <SplashScreen onDone={handleSplashDone} />}
+      <div className="app">
       <Header
         view={view}
         onViewChange={setView}
