@@ -48,7 +48,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       <div className="card__body">
         <div className="card__meta">
           <h2 className="card__name">{name}</h2>
-          <p className="card__location">{province} · {cuisine}</p>
+          <p className="card__location">{province}</p>
         </div>
 
         <blockquote className="card__note">
