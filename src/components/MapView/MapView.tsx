@@ -11,13 +11,10 @@ interface MapViewProps {
   theme: Theme
 }
 
-const TILE_URLS: Record<Theme, string> = {
-  dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-  light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-}
+const TILE_URL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 const TILE_ATTRIBUTION =
-  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 
 const SPAIN_CENTER: [number, number] = [40.4168, -3.7038]
 
@@ -32,7 +29,7 @@ function MapResizer() {
   return null
 }
 
-export function MapView({ restaurants, theme }: MapViewProps) {
+export function MapView({ restaurants, theme: _theme }: MapViewProps) {
   const [activeId, setActiveId] = useState<string | null>(null)
 
   return (
@@ -49,7 +46,7 @@ export function MapView({ restaurants, theme }: MapViewProps) {
         zoomControl={false}
       >
         <MapResizer />
-        <TileLayer url={TILE_URLS[theme]} attribution={TILE_ATTRIBUTION} />
+        <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} />
 
         {restaurants.map(restaurant => (
           <Marker

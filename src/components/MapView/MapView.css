@@ -12,6 +12,11 @@
   min-height: 400px;
 }
 
+/* Dark mode: invert OSM tiles to get a dark map — no API key needed */
+[data-theme="dark"] .leaflet-tile {
+  filter: invert(100%) hue-rotate(180deg) brightness(92%) contrast(88%) saturate(0.65);
+}
+
 /* Override Leaflet base styles to match design tokens */
 .leaflet-container {
   background: var(--color-bg) !important;
