@@ -80,6 +80,7 @@ export function Header({
 
   return (
     <header className="header">
+      <h1 className="visually-hidden">miCarta</h1>
       {particlesReady && (
         <Particles
           id="header-particles"
