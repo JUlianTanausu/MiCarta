@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Particles, { ParticlesProvider } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
@@ -30,8 +30,8 @@ const particlesOptions: ISourceOptions = {
   fpsLimit: 60,
   particles: {
     number: { value: 50, density: { enable: true } },
-    color: { value: '#D4582A' },
-    opacity: { value: { min: 0.05, max: 0.2 } },
+    color: { value: '#2EC4B6' },
+    opacity: { value: { min: 0.04, max: 0.15 } },
     size: { value: { min: 1, max: 2.5 } },
     move: {
       enable: true,
@@ -44,7 +44,7 @@ const particlesOptions: ISourceOptions = {
     links: {
       enable: true,
       distance: 100,
-      color: '#D4582A',
+      color: '#2EC4B6',
       opacity: 0.06,
       width: 1,
     },
@@ -65,10 +65,18 @@ export function Header({
   filteredCount,
 }: HeaderProps) {
   const [filterOpen, setFilterOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const hasActiveFilters = !!filters.city
 
   return (
-    <header className="header">
+    <header className={`header${scrolled ? ' header--scrolled' : ''}`}>
       <h1 className="visually-hidden">miCarta</h1>
       <ParticlesProvider init={initEngine}>
         <Particles
@@ -85,6 +93,7 @@ export function Header({
             alt="miCarta logo"
             className="header__logo"
             whileHover={{ scale: 1.05, rotate: 3 }}
+            whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300 }}
           />
           <div className="header__brand-text">
@@ -113,7 +122,7 @@ export function Header({
           <motion.button
             className={`header__filter-btn${hasActiveFilters ? ' header__filter-btn--active' : ''}`}
             onClick={() => setFilterOpen(true)}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
             aria-label="Abrir filtros"
           >
             <svg

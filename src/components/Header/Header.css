@@ -3,13 +3,18 @@
   top: 0;
   z-index: 50;
   height: var(--header-height);
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(8, 10, 15, 0.65);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   transition:
-    background-color var(--transition-theme),
-    border-color var(--transition-theme);
+    height var(--transition-base),
+    background-color var(--transition-theme);
+}
+
+.header--scrolled {
+  height: 48px;
+  background: rgba(8, 10, 15, 0.8);
 }
 
 .header__particles {
@@ -39,17 +44,17 @@
 }
 
 .header__logo {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-full);
   object-fit: cover;
-  border: 2px solid var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-accent), 0 0 16px rgba(46, 155, 155, 0.2);
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 0 1px rgba(46, 196, 182, 0.15), 0 0 16px rgba(46, 196, 182, 0.18);
   transition: box-shadow var(--transition-base);
 }
 
 .header__logo:hover {
-  box-shadow: 0 0 0 1px var(--color-accent), 0 0 28px rgba(46, 155, 155, 0.45), 0 0 8px rgba(212, 88, 42, 0.3);
+  box-shadow: 0 0 0 1px rgba(46, 196, 182, 0.4), 0 0 28px rgba(46, 196, 182, 0.45), 0 0 8px rgba(212, 88, 42, 0.2);
 }
 
 .header__brand-text {
@@ -69,7 +74,7 @@
 }
 
 .header__title-carta {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .header__subtitle {
@@ -78,7 +83,6 @@
   line-height: 1.2;
 }
 
-/* Hide brand text on very small mobile */
 @media (max-width: 360px) {
   .header__brand-text {
     display: none;
@@ -92,28 +96,30 @@
   margin-left: auto;
 }
 
-/* Filter button — visible on mobile only */
 .header__filter-btn {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-md);
-  background: var(--color-surface-2);
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--color-text-muted);
   cursor: pointer;
+  backdrop-filter: blur(8px);
   transition:
     background-color var(--transition-fast),
     color var(--transition-fast),
     border-color var(--transition-fast);
 }
 
-.header__filter-btn--active {
+.header__filter-btn--active,
+.header__filter-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background: rgba(46, 196, 182, 0.08);
 }
 
 .header__filter-dot {
