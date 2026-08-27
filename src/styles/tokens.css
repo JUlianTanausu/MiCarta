@@ -1,37 +1,43 @@
-/* ── Tema dark (default) ── */
 :root,
 [data-theme="dark"] {
-  --color-bg:          #0A0806;
-  --color-surface:     #1A1612;
-  --color-surface-2:   #252018;
-  --color-primary:     #D4582A;
-  --color-primary-dim: rgba(212, 88, 42, 0.15);
-  --color-accent:      #2E9B9B;
-  --color-text:        #F5F0E8;
-  --color-text-muted:  #8A8480;
-  --color-border:      #332E28;
-  --color-overlay:     rgba(10, 8, 6, 0.88);
+  --color-bg:          #080A0F;
+  --color-surface:     #131620;
+  --color-surface-2:   #1C1F2E;
+  --color-primary:     #2EC4B6;
+  --color-primary-dim: rgba(46, 196, 182, 0.12);
+  --color-warm:        #D4582A;
+  --color-warm-dim:    rgba(212, 88, 42, 0.12);
+  --color-accent:      #2EC4B6;
+  --color-text:        #F0EEF8;
+  --color-text-muted:  #7A7D8E;
+  --color-border:      #252840;
+  --color-overlay:     rgba(6, 8, 14, 0.85);
+  --aurora-1:          rgba(46, 196, 182, 0.18);
+  --aurora-2:          rgba(180, 100, 40, 0.10);
 
-  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.55);
-  --shadow-card-hover: 0 8px 40px rgba(212, 88, 42, 0.28);
-  --shadow-modal:      0 24px 80px rgba(0, 0, 0, 0.75);
+  --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 8px 40px rgba(46, 196, 182, 0.22);
+  --shadow-modal:      0 24px 80px rgba(0, 0, 0, 0.7);
 }
 
-/* ── Tema light ── */
 [data-theme="light"] {
-  --color-bg:          #F8F4EE;
+  --color-bg:          #F4F6FB;
   --color-surface:     #FFFFFF;
-  --color-surface-2:   #F0EBE3;
-  --color-primary:     #C44D22;
-  --color-primary-dim: rgba(196, 77, 34, 0.1);
-  --color-accent:      #237A7A;
+  --color-surface-2:   #EEF0F7;
+  --color-primary:     #1A9E92;
+  --color-primary-dim: rgba(26, 158, 146, 0.1);
+  --color-warm:        #C44D22;
+  --color-warm-dim:    rgba(196, 77, 34, 0.1);
+  --color-accent:      #1A9E92;
   --color-text:        #1A1410;
   --color-text-muted:  #6B6460;
-  --color-border:      #E0D8CE;
+  --color-border:      #E0E3EF;
   --color-overlay:     rgba(0, 0, 0, 0.6);
+  --aurora-1:          rgba(26, 158, 146, 0.12);
+  --aurora-2:          rgba(196, 77, 34, 0.07);
 
   --shadow-card:       0 4px 24px rgba(0, 0, 0, 0.1);
-  --shadow-card-hover: 0 8px 40px rgba(196, 77, 34, 0.2);
+  --shadow-card-hover: 0 8px 40px rgba(26, 158, 146, 0.2);
   --shadow-modal:      0 24px 80px rgba(0, 0, 0, 0.25);
 }
 
@@ -79,5 +85,5 @@
   --transition-theme:  350ms ease;
 
   /* ── Header ── */
-  --header-height: 72px;
+  --header-height: 56px;
 }
