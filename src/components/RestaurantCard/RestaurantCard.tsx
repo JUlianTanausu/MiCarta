@@ -7,7 +7,7 @@ interface RestaurantCardProps {
 }
 
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
-  const { name, cuisine, city, photos, warning, tags, googleMapsUrl, websiteUrl, personalNote, visitDate } = restaurant
+  const { name, cuisine, province, photos, warning, tags, googleMapsUrl, websiteUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
   return (
@@ -48,10 +48,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       <div className="card__body">
         <div className="card__meta">
           <h2 className="card__name">{name}</h2>
-          <p className="card__location">
-            {city} · {cuisine}
-            {visitDate && <span className="card__date"> · {visitDate}</span>}
-          </p>
+          <p className="card__location">{province} · {cuisine}</p>
         </div>
 
         <blockquote className="card__note">
@@ -78,7 +75,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
-            Maps
+            Google
           </a>
           {websiteUrl && (
             <a
