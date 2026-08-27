@@ -1,9 +1,9 @@
 /* ── Tema dark (default) ── */
 :root,
 [data-theme="dark"] {
-  --color-bg:          #14110D;
-  --color-surface:     #1F1B16;
-  --color-surface-2:   #2A2520;
+  --color-bg:          #0A0806;
+  --color-surface:     #1A1612;
+  --color-surface-2:   #252018;
   --color-primary:     #D4582A;
   --color-primary-dim: rgba(212, 88, 42, 0.15);
   --color-accent:      #2E9B9B;
