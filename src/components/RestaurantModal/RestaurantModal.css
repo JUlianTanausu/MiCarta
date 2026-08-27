@@ -8,24 +8,35 @@
 }
 
 .modal {
-  position: fixed;
-  z-index: 201;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   overflow-y: auto;
   box-shadow: var(--shadow-modal);
 
   /* Mobile: fullscreen */
+  position: fixed;
   inset: 0;
   border-radius: 0;
+}
+
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  pointer-events: none;
+  z-index: 201;
+}
+
+.modal-wrapper .modal {
+  pointer-events: all;
 }
 
 @media (min-width: 640px) {
   .modal {
     inset: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: min(640px, 95vw);
     max-height: 90vh;
     border-radius: var(--radius-xl);
@@ -64,7 +75,7 @@
 
 .modal__thumb {
   width: 48px;
-  height: 36px;
+  height: 44px;
   border-radius: var(--radius-sm);
   overflow: hidden;
   border: 2px solid transparent;

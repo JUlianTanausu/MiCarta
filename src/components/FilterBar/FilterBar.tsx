@@ -31,6 +31,7 @@ export function FilterBar({
           onCuisineChange={onCuisineChange}
           availableCities={availableCities}
           availableCuisines={availableCuisines}
+          idPrefix="desktop"
         />
         {active && (
           <button className="filter-bar__clear" onClick={onClear}>
@@ -65,6 +66,7 @@ export function FilterBar({
                 onCuisineChange={onCuisineChange}
                 availableCities={availableCities}
                 availableCuisines={availableCuisines}
+                idPrefix="sheet"
               />
               <div className="filter-bar__actions">
                 {active && (
@@ -90,15 +92,16 @@ interface FilterSelectsProps {
   onCuisineChange: (cuisine: string) => void
   availableCities: string[]
   availableCuisines: string[]
+  idPrefix: string
 }
 
-function FilterSelects({ filters, onCityChange, onCuisineChange, availableCities, availableCuisines }: FilterSelectsProps) {
+function FilterSelects({ filters, onCityChange, onCuisineChange, availableCities, availableCuisines, idPrefix }: FilterSelectsProps) {
   return (
     <div className="filter-bar__selects">
       <div className="filter-bar__group">
-        <label className="filter-bar__label" htmlFor="filter-city">Ciudad</label>
+        <label className="filter-bar__label" htmlFor={`${idPrefix}-city`}>Ciudad</label>
         <select
-          id="filter-city"
+          id={`${idPrefix}-city`}
           className="filter-bar__select"
           value={filters.city}
           onChange={e => onCityChange(e.target.value)}
@@ -111,9 +114,9 @@ function FilterSelects({ filters, onCityChange, onCuisineChange, availableCities
       </div>
 
       <div className="filter-bar__group">
-        <label className="filter-bar__label" htmlFor="filter-cuisine">Cocina</label>
+        <label className="filter-bar__label" htmlFor={`${idPrefix}-cuisine`}>Cocina</label>
         <select
-          id="filter-cuisine"
+          id={`${idPrefix}-cuisine`}
           className="filter-bar__select"
           value={filters.cuisine}
           onChange={e => onCuisineChange(e.target.value)}

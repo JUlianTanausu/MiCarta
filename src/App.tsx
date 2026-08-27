@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import { Header } from './components/Header/Header'
 import { CardGrid } from './components/CardGrid/CardGrid'
 import { MapView } from './components/MapView/MapView'
@@ -19,6 +19,7 @@ export default function App() {
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null)
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="app">
       <Header
         view={view}
@@ -79,5 +80,6 @@ export default function App() {
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   )
 }

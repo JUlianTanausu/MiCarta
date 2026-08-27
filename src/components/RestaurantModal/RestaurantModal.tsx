@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import type { Restaurant } from '../../types/Restaurant'
 import './RestaurantModal.css'
@@ -14,6 +14,7 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
   const { id, name, cuisine, city, province, address, phone, googleMapsUrl, websiteUrl, photos, warning, personalNote, tags, visitDate } = restaurant
   const [activePhoto, setActivePhoto] = useState(0)
   const displayPhotos = photos.length > 0 ? photos : [PLACEHOLDER_IMG]
+  const closeButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -25,6 +26,10 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
     }
   }, [onClose])
 
+  useEffect(() => {
+    closeButtonRef.current?.focus()
+  }, [])
+
   return (
     <>
       <motion.div
@@ -35,6 +40,7 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
         onClick={onClose}
       />
 
+      <div className="modal-wrapper">
       <motion.div
         className="modal"
         layoutId={`card-${id}`}
@@ -42,6 +48,9 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ type: 'spring', stiffness: 280, damping: 28 }}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
       >
         {/* Galería */}
         <div className="modal__gallery">
@@ -67,7 +76,7 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
             </div>
           )}
 
-          <button className="modal__close" onClick={onClose} aria-label="Cerrar">
+          <button ref={closeButtonRef} className="modal__close" onClick={onClose} aria-label="Cerrar">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <line x1="18" y1="6" x2="6" y2="18"/>
               <line x1="6" y1="6" x2="18" y2="18"/>
@@ -79,7 +88,7 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
         <div className="modal__content">
           <div className="modal__header">
             <div>
-              <h2 className="modal__name">{name}</h2>
+              <h2 id="modal-title" className="modal__name">{name}</h2>
               <p className="modal__location">{city}, {province} · {cuisine}</p>
               {visitDate && <p className="modal__date">Visitado en {visitDate}</p>}
             </div>
@@ -151,6 +160,7 @@ export function RestaurantModal({ restaurant, onClose }: RestaurantModalProps) {
           </div>
         </div>
       </motion.div>
+      </div>
     </>
   )
 }

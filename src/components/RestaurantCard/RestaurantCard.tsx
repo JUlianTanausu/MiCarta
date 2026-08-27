@@ -24,7 +24,13 @@ export function RestaurantCard({ restaurant, onClick }: RestaurantCardProps) {
       tabIndex={0}
       role="button"
       aria-label={`Ver detalle de ${name}`}
-      onKeyDown={e => e.key === 'Enter' && onClick(restaurant)}
+      onKeyDown={(e) => {
+          if (e.target !== e.currentTarget) return
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            onClick(restaurant)
+          }
+        }}
     >
       <div className="card__image-wrapper">
         <img

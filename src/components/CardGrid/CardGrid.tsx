@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
+import type { Variants } from 'framer-motion'
 import { RestaurantCard } from '../RestaurantCard/RestaurantCard'
 import type { Restaurant } from '../../types/Restaurant'
 import './CardGrid.css'
@@ -8,7 +9,7 @@ interface CardGridProps {
   onCardClick: (restaurant: Restaurant) => void
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -18,13 +19,13 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.96 },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: 'spring', stiffness: 260, damping: 22 },
+    transition: { type: 'spring' as const, stiffness: 260, damping: 22 },
   },
 }
 

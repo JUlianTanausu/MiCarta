@@ -10,13 +10,13 @@
   transition:
     background-color var(--transition-theme),
     border-color var(--transition-theme);
-  overflow: hidden;
 }
 
 .header__particles {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .header__inner {

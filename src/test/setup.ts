@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom'
+import React from 'react'
 import { vi } from 'vitest'
 
 // IntersectionObserver is not implemented in jsdom; mock it so Framer Motion's
@@ -22,11 +23,9 @@ Object.defineProperty(globalThis, 'IntersectionObserver', {
 // Mock tsparticles library for tests
 vi.mock('@tsparticles/react', () => ({
   default: () => null,
-  initParticlesEngine: vi.fn(async (callback) => {
-    return callback({})
-  }),
+  ParticlesProvider: ({ children }: { children: React.ReactNode }) => children,
 }))
 
 vi.mock('@tsparticles/slim', () => ({
-  loadSlimEngine: vi.fn(),
+  loadSlim: vi.fn().mockResolvedValue(undefined),
 }))

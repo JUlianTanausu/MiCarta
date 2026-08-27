@@ -33,8 +33,8 @@
   top: var(--space-2) !important;
   right: var(--space-2) !important;
   font-size: 18px !important;
-  width: 28px !important;
-  height: 28px !important;
+  width: 44px !important;
+  height: 44px !important;
 }
 
 .leaflet-control-zoom {
@@ -88,7 +88,7 @@
   font-weight: var(--font-semibold);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-sm);
-  min-height: 36px;
+  min-height: 44px;
   transition: opacity var(--transition-fast);
 }
 

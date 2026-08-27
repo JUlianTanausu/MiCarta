@@ -1,14 +1,16 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Particles, { initParticlesEngine } from '@tsparticles/react'
-import { loadSlimEngine } from '@tsparticles/slim'
-import type { ISourceOptions } from '@tsparticles/engine'
+import Particles, { ParticlesProvider } from '@tsparticles/react'
+import { loadSlim } from '@tsparticles/slim'
+import type { Engine, ISourceOptions } from '@tsparticles/engine'
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle'
 import { ViewToggle } from '../ViewToggle/ViewToggle'
 import { FilterBar } from '../FilterBar/FilterBar'
 import type { Theme, ViewMode, FilterState } from '../../types/Restaurant'
 import logoSrc from '../../assets/logo.png'
 import './Header.css'
+
+const initEngine = (engine: Engine): Promise<void> => loadSlim(engine)
 
 interface HeaderProps {
   view: ViewMode
@@ -66,29 +68,19 @@ export function Header({
   totalCount,
   filteredCount,
 }: HeaderProps) {
-  const [particlesReady, setParticlesReady] = useState(false)
   const [filterOpen, setFilterOpen] = useState(false)
   const hasActiveFilters = !!(filters.city || filters.cuisine)
-
-  useEffect(() => {
-    initParticlesEngine(async engine => {
-      await loadSlimEngine(engine)
-    }).then(() => setParticlesReady(true))
-  }, [])
-
-  const handleParticlesLoaded = useCallback(async () => {}, [])
 
   return (
     <header className="header">
       <h1 className="visually-hidden">miCarta</h1>
-      {particlesReady && (
+      <ParticlesProvider init={initEngine}>
         <Particles
           id="header-particles"
           className="header__particles"
           options={particlesOptions}
-          particlesLoaded={handleParticlesLoaded}
         />
-      )}
+      </ParticlesProvider>
 
       <div className="header__inner">
         <div className="header__brand">
