@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion'
 import { Header } from './components/Header/Header'
 import { CardGrid } from './components/CardGrid/CardGrid'
@@ -13,11 +13,22 @@ const restaurants: Restaurant[] = restaurantsData as Restaurant[]
 
 export default function App() {
   const [view, setView] = useState<ViewMode>('cards')
-  const [showSplash, setShowSplash] = useState<boolean>(true)
+
+  useEffect(() => {
+    const el = document.querySelector<HTMLElement>('.app__main')
+    if (el?.scrollTo) el.scrollTo(0, 0)
+  }, [])
+  const [showSplash, setShowSplash] = useState<boolean>(
+    () => !sessionStorage.getItem('micarta-splash-shown')
+  )
 
   const handleSplashDone = () => {
     sessionStorage.setItem('micarta-splash-shown', '1')
     setShowSplash(false)
+    requestAnimationFrame(() => {
+      const el = document.querySelector<HTMLElement>('.app__main')
+      if (el?.scrollTo) el.scrollTo(0, 0)
+    })
   }
 
   return (
