@@ -112,8 +112,6 @@ export function MapView({ restaurants }: MapViewProps) {
                   )}
                   <a
                     href={restaurant.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="map-popup__btn"
                     aria-label={`Ver ${restaurant.name} en Google Maps`}
                   >

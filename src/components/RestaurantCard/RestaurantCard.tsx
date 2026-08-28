@@ -39,10 +39,10 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       whileHover={{ y: -8, scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-      onClick={() => window.open(googleMapsUrl, '_blank', 'noopener,noreferrer')}
+      onClick={() => window.location.href = googleMapsUrl}
       role="link"
       tabIndex={0}
-      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') window.open(googleMapsUrl, '_blank', 'noopener,noreferrer') }}
+      onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') window.location.href = googleMapsUrl }}
       aria-label={`Ver ${name} en Google Maps`}
     >
       {/* Photo / Placeholder */}
