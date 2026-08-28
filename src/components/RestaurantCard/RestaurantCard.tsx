@@ -36,8 +36,8 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       className="card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -6, scale: 1.015 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ y: -8, scale: 1.03 }}
+      whileTap={{ scale: 0.97 }}
       transition={{ type: 'spring', stiffness: 320, damping: 22 }}
       onClick={() => window.open(googleMapsUrl, '_blank', 'noopener,noreferrer')}
       role="link"

@@ -16,8 +16,8 @@
 }
 
 .card:hover {
-  box-shadow: 0 8px 40px rgba(46, 196, 182, 0.22), 0 0 0 1px rgba(46, 196, 182, 0.15) inset;
-  border-color: rgba(46, 196, 182, 0.2);
+  box-shadow: 0 12px 56px rgba(46, 196, 182, 0.38), 0 0 0 1px rgba(46, 196, 182, 0.28) inset;
+  border-color: rgba(46, 196, 182, 0.35);
 }
 
 /* Photo */
