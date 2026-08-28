@@ -55,6 +55,19 @@
     "tags": ["bocadillo", "carnes", "torreznos"]
   },
   {
+    "id": "meson-cuevas-del-vino-chinchon",
+    "name": "Mesón Cuevas Del Vino",
+    "cuisine": "Asador",
+    "city": "Chinchón",
+    "province": "Madrid",
+    "coordinates": { "lat": 40.140642769536036, "lng": -3.417195377974624 },
+    "address": "C. de Benito Hortelano, 13, Bajo, 28370 Chinchón, Madrid",
+    "googleMapsUrl": "https://maps.google.com/?q=40.140642769536036,-3.417195377974624",
+    "photos": [],
+    "personalNote": "Tiene unas vasijas de vino en cueva que puedes visitar.",
+    "tags": ["cordero", "cochinillo"]
+  },
+  {
     "id": "hotel-restaurante-marino-honrubia",
     "name": "Hotel Restaurante Marino",
     "cuisine": "Bar de carretera",
