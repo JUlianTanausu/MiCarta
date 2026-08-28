@@ -13,14 +13,24 @@
   height: clamp(200px, 45vw, 300px);
   object-fit: contain;
   border-radius: 50%;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 40px rgba(46, 196, 182, 0.25)) drop-shadow(0 0 80px rgba(212, 88, 42, 0.12));
-  transition: opacity var(--transition-base), filter var(--transition-base);
+  opacity: 0.9;
+  animation: footer-glow 5s ease-in-out infinite;
+}
+
+@keyframes footer-glow {
+  0%   { filter: drop-shadow(0 0 30px rgba(46, 196, 182, 0.35)) drop-shadow(0 0 70px rgba(46, 196, 182, 0.12)); }
+  50%  { filter: drop-shadow(0 0 50px rgba(212, 88, 42, 0.45)) drop-shadow(0 0 100px rgba(212, 88, 42, 0.18)); }
+  100% { filter: drop-shadow(0 0 30px rgba(46, 196, 182, 0.35)) drop-shadow(0 0 70px rgba(46, 196, 182, 0.12)); }
 }
 
 .footer__logo:hover {
+  animation-play-state: paused;
   opacity: 1;
-  filter: drop-shadow(0 0 50px rgba(46, 196, 182, 0.4)) drop-shadow(0 0 100px rgba(212, 88, 42, 0.2));
+  filter: drop-shadow(0 0 60px rgba(46, 196, 182, 0.55)) drop-shadow(0 0 120px rgba(212, 88, 42, 0.25));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__logo { animation: none; }
 }
 
 .footer__tagline {
