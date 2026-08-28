@@ -11,28 +11,45 @@
 .app::before {
   content: '';
   position: fixed;
-  inset: 0;
+  inset: -10%;
   z-index: 0;
   pointer-events: none;
   background:
     radial-gradient(ellipse 80% 60% at 85% 10%, var(--aurora-1) 0%, transparent 70%),
     radial-gradient(ellipse 60% 50% at 15% 90%, var(--aurora-2) 0%, transparent 65%),
     radial-gradient(ellipse 40% 40% at 50% 50%, rgba(46, 196, 182, 0.04) 0%, transparent 60%);
+  animation: aurora-drift 22s ease-in-out infinite;
 }
 
-@keyframes aurora-breathe {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.72; }
+.app::after {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 20% 25%, rgba(212, 88, 42, 0.09) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 45% at 75% 75%, rgba(46, 196, 182, 0.07) 0%, transparent 60%);
+  animation: aurora-drift-2 28s ease-in-out infinite;
 }
 
-@media (min-width: 768px) {
-  .app::before {
-    animation: aurora-breathe 28s ease-in-out infinite;
-  }
+@keyframes aurora-drift {
+  0%   { transform: scale(1)    translate(0,   0);   opacity: 1; }
+  33%  { transform: scale(1.07) translate(3%,  -4%); opacity: 0.82; }
+  66%  { transform: scale(0.96) translate(-3%, 3%);  opacity: 0.95; }
+  100% { transform: scale(1)    translate(0,   0);   opacity: 1; }
+}
+
+@keyframes aurora-drift-2 {
+  0%   { transform: scale(1)    translate(0,   0);   opacity: 0.75; }
+  33%  { transform: scale(0.93) translate(-4%, 3%);  opacity: 1; }
+  66%  { transform: scale(1.06) translate(4%,  -3%); opacity: 0.8; }
+  100% { transform: scale(1)    translate(0,   0);   opacity: 0.75; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .app::before { animation: none; }
+  .app::before,
+  .app::after { animation: none; }
 }
 
 .app__main {
