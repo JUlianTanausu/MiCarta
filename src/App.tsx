@@ -4,6 +4,7 @@ import { Header } from './components/Header/Header'
 import { CardGrid } from './components/CardGrid/CardGrid'
 import { MapView } from './components/MapView/MapView'
 import { SplashScreen } from './components/SplashScreen/SplashScreen'
+import { Footer } from './components/Footer/Footer'
 import type { Restaurant, ViewMode } from './types/Restaurant'
 import restaurantsData from './data/restaurants.json'
 import './App.css'
@@ -41,6 +42,7 @@ export default function App() {
                 className="app__view app__view--cards"
               >
                 <CardGrid restaurants={restaurants} />
+                <Footer />
               </motion.div>
             ) : (
               <motion.div

@@ -13,8 +13,8 @@
 }
 
 .splash__logo {
-  width: clamp(200px, 40vw, 280px);
-  height: clamp(200px, 40vw, 280px);
+  width: clamp(260px, 65vw, 480px);
+  height: clamp(260px, 65vw, 480px);
   object-fit: contain;
   border-radius: 50%;
   animation: splash-glow 2.2s ease-out 0.4s both;
