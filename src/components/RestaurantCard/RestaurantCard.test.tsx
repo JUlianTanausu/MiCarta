@@ -23,8 +23,8 @@ describe('RestaurantCard', () => {
   })
 
   it('renders city and province', () => {
-    render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(screen.getByText('Cádiz · Cádiz')).toBeInTheDocument()
+    const { container } = render(<RestaurantCard restaurant={baseRestaurant} />)
+    expect(container.querySelector('.card__location')).toHaveTextContent('Cádiz · Cádiz')
   })
 
   it('renders all tags', () => {
@@ -44,8 +44,8 @@ describe('RestaurantCard', () => {
 
   it('shows warning chip with full warning text when warning is set', () => {
     const withWarning = { ...baseRestaurant, warning: 'Reserva obligatoria' }
-    render(<RestaurantCard restaurant={withWarning} />)
-    expect(screen.getByText('Reserva obligatoria')).toBeInTheDocument()
+    const { container } = render(<RestaurantCard restaurant={withWarning} />)
+    expect(container.querySelector('.card__warning-chip')).toHaveTextContent('Reserva obligatoria')
   })
 
   it('does not show warning chip when warning is absent', () => {
@@ -54,8 +54,8 @@ describe('RestaurantCard', () => {
   })
 
   it('shows personal note as blockquote', () => {
-    render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(screen.getByText(/"Excelente marisquería"/)).toBeInTheDocument()
+    const { container } = render(<RestaurantCard restaurant={baseRestaurant} />)
+    expect(container.querySelector('.card__note')).toHaveTextContent('Excelente marisquería')
   })
 
 
