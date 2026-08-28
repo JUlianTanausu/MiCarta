@@ -1,12 +1,7 @@
 import { motion } from 'framer-motion'
 import type { Restaurant } from '../../types/Restaurant'
+import { TAG_EMOJI } from '../../data/tagEmoji'
 import './RestaurantCard.css'
-
-const TAG_EMOJI: Record<string, string> = {
-  mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
-  carnes: '🥩', brasa: '🔥', bocadillo: '🥖', torreznos: '🥓', tapas: '🍢', 'carne cabra': '🐐', cordero: '🐑', cochinillo: '🐷', sushi: '🍣', pizza: '🍕',
-  pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷', cervezas: '🍺', cremaet: '☕', guachinche: '🏺', 'plato combinado': '🍽️',
-}
 
 function RestaurantCover({ tags, name }: { tags: string[]; name: string }) {
   const emojis = tags
@@ -28,7 +23,7 @@ interface RestaurantCardProps {
 }
 
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
-  const { name, cuisine: _cuisine, city, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
+  const { name, city, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
   return (

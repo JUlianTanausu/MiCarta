@@ -11,9 +11,7 @@ export interface Restaurant {
   province: string
   coordinates: Coordinates
   address: string
-  phone?: string
   googleMapsUrl: string
-  websiteUrl?: string
   photos: string[]
   warning?: string
   personalNote: string
@@ -22,7 +20,3 @@ export interface Restaurant {
 }
 
 export type ViewMode = 'cards' | 'map'
-
-export interface FilterState {
-  city: string
-}

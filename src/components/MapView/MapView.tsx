@@ -4,16 +4,11 @@ import 'leaflet/dist/leaflet.css'
 import { motion } from 'framer-motion'
 import { createMarkerIcon } from '../MapMarker/MapMarker'
 import type { Restaurant } from '../../types/Restaurant'
+import { TAG_EMOJI } from '../../data/tagEmoji'
 import './MapView.css'
 
 interface MapViewProps {
   restaurants: Restaurant[]
-}
-
-const TAG_EMOJI: Record<string, string> = {
-  mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
-  carnes: '🥩', brasa: '🔥', bocadillo: '🥖', torreznos: '🥓', tapas: '🍢', 'carne cabra': '🐐', cordero: '🐑', cochinillo: '🐷', sushi: '🍣', pizza: '🍕',
-  pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷', cervezas: '🍺', cremaet: '☕', guachinche: '🏺', 'plato combinado': '🍽️',
 }
 
 function PopupCover({ restaurant }: { restaurant: Restaurant }) {
@@ -101,7 +96,7 @@ export function MapView({ restaurants }: MapViewProps) {
                     </p>
                   </div>
                   <blockquote className="map-popup__note">
-                    "{restaurant.personalNote}"
+                    💬 {restaurant.personalNote}
                   </blockquote>
                   {restaurant.tags.length > 0 && (
                     <div className="map-popup__tags">

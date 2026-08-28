@@ -21,7 +21,6 @@ export default function App() {
   const [showSplash, setShowSplash] = useState<boolean>(true)
 
   const handleSplashDone = () => {
-    sessionStorage.setItem('micarta-splash-shown', '1')
     setShowSplash(false)
     requestAnimationFrame(() => {
       const el = document.querySelector<HTMLElement>('.app__main')
