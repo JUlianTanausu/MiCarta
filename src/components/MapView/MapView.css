@@ -62,14 +62,13 @@
   border-bottom: 1px solid var(--color-border) !important;
 }
 
-/* Mini-card popup — mirrors .card design */
+/* Mini-card popup — solid dark surface over map tiles */
 .map-popup__card {
   display: flex;
   flex-direction: column;
   width: 240px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background: rgba(10, 12, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
