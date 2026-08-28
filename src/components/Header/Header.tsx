@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, animate } from 'framer-motion'
 import Particles, { ParticlesProvider } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
 import type { Engine, ISourceOptions } from '@tsparticles/engine'
@@ -45,6 +45,16 @@ const particlesOptions: ISourceOptions = {
 
 export function Header({ view, onViewChange, totalCount }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
+  const [displayCount, setDisplayCount] = useState(0)
+
+  useEffect(() => {
+    const controls = animate(0, totalCount, {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => setDisplayCount(Math.round(v)),
+    })
+    return () => controls.stop()
+  }, [totalCount])
 
   useEffect(() => {
     // The scrollable container is .app__main, not the document root
@@ -82,7 +92,8 @@ export function Header({ view, onViewChange, totalCount }: HeaderProps) {
               <span className="header__title-carta">Carta</span>
             </span>
             <span className="header__subtitle">
-              {totalCount} restaurante{totalCount !== 1 ? 's' : ''}
+              <motion.span key={totalCount}>{displayCount}</motion.span>{' '}
+              restaurante{totalCount !== 1 ? 's' : ''}
             </span>
           </div>
         </div>

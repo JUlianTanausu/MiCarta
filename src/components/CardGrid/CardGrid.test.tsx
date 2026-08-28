@@ -32,7 +32,7 @@ describe('CardGrid', () => {
 
   it('shows empty state when restaurants array is empty', () => {
     render(<CardGrid restaurants={[]} />)
-    expect(screen.getByText('No hay restaurantes que coincidan con los filtros.')).toBeInTheDocument()
+    expect(screen.getByText('No hay restaurantes.')).toBeInTheDocument()
   })
 
   it('shows plate emoji in empty state', () => {

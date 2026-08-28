@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import type { Restaurant } from '../../types/Restaurant'
 import { TAG_EMOJI } from '../../data/tagEmoji'
 import './RestaurantCard.css'
@@ -26,14 +27,37 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
   const { name, city, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
+  const cardRef = useRef<HTMLElement>(null)
+  const rawX = useMotionValue(0)
+  const rawY = useMotionValue(0)
+  const rotateX = useSpring(rawX, { stiffness: 280, damping: 28 })
+  const rotateY = useSpring(rawY, { stiffness: 280, damping: 28 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+    rawY.set((x - 0.5) * 18)
+    rawX.set((0.5 - y) * 12)
+  }
+
+  const handleMouseLeave = () => {
+    rawX.set(0)
+    rawY.set(0)
+  }
+
   return (
     <motion.article
+      ref={cardRef}
       className="card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -8, scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       onClick={() => window.location.href = googleMapsUrl}
       role="link"
       tabIndex={0}

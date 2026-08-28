@@ -1,4 +1,5 @@
 .card-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
@@ -35,6 +36,14 @@
     grid-template-columns: repeat(4, 1fr);
     padding: var(--space-8);
   }
+}
+
+.card-grid__spotlight {
+  position: absolute;
+  inset: -120px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
 }
 
 .card-grid__empty {
