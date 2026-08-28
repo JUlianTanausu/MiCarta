@@ -55,6 +55,19 @@
     "tags": ["bocadillo", "carnes", "torreznos"]
   },
   {
+    "id": "restaurante-frontera-66-collado-villalba",
+    "name": "Restaurante Frontera 66",
+    "cuisine": "Bar restaurante",
+    "city": "Collado Villalba",
+    "province": "Madrid",
+    "coordinates": { "lat": 40.61675726455932, "lng": -4.010570857985128 },
+    "address": "C. San Antonio, 23, 28400 Collado Villalba, Madrid",
+    "googleMapsUrl": "https://maps.google.com/?q=40.61675726455932,-4.010570857985128",
+    "photos": [],
+    "personalNote": "Carta exclusiva de cervezas de distintos países, tapas ricas y tabla de parrillada.",
+    "tags": ["cervezas", "tapas", "carnes"]
+  },
+  {
     "id": "meson-cuevas-del-vino-chinchon",
     "name": "Mesón Cuevas Del Vino",
     "cuisine": "Asador",
