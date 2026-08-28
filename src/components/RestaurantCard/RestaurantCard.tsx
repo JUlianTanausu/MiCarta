@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import type { Restaurant } from '../../types/Restaurant'
 import { TAG_EMOJI } from '../../data/tagEmoji'
@@ -23,39 +22,50 @@ interface RestaurantCardProps {
   restaurant: Restaurant
 }
 
+const SPRING = { stiffness: 260, damping: 32 }
+
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
   const { name, city, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
-  const cardRef = useRef<HTMLElement>(null)
-  const rawX = useMotionValue(0)
-  const rawY = useMotionValue(0)
-  const rotateX = useSpring(rawX, { stiffness: 280, damping: 28 })
-  const rotateY = useSpring(rawY, { stiffness: 280, damping: 28 })
+  const rawRotX = useMotionValue(0)
+  const rawRotY = useMotionValue(0)
+  const rawY    = useMotionValue(0)
+  const rawScale = useMotionValue(1)
+
+  const rotateX = useSpring(rawRotX, SPRING)
+  const rotateY = useSpring(rawRotY, SPRING)
+  const y       = useSpring(rawY, SPRING)
+  const scale   = useSpring(rawScale, SPRING)
+
+  const handleMouseEnter = () => {
+    rawY.set(-8)
+    rawScale.set(1.03)
+  }
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width
-    const y = (e.clientY - rect.top) / rect.height
-    rawY.set((x - 0.5) * 18)
-    rawX.set((0.5 - y) * 12)
+    const yPos = (e.clientY - rect.top) / rect.height
+    rawRotY.set((x - 0.5) * 16)
+    rawRotX.set((0.5 - yPos) * 10)
   }
 
   const handleMouseLeave = () => {
-    rawX.set(0)
+    rawRotX.set(0)
+    rawRotY.set(0)
     rawY.set(0)
+    rawScale.set(1)
   }
 
   return (
     <motion.article
-      ref={cardRef}
       className="card"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -8, scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
-      transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      style={{ rotateX, rotateY, y, scale, transformPerspective: 900 }}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={() => window.location.href = googleMapsUrl}
@@ -64,7 +74,6 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') window.location.href = googleMapsUrl }}
       aria-label={`Ver ${name} en Google Maps`}
     >
-      {/* Photo / Placeholder */}
       <div className="card__image-wrapper">
         {hasPhoto ? (
           <img
