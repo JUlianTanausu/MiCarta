@@ -121,6 +121,9 @@
   margin-top: var(--space-1);
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Personal note — fixed height so tags align across all cards */
