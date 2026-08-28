@@ -145,19 +145,24 @@
   gap: 2px;
 }
 
-.map-popup__name {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: var(--font-bold);
-  color: var(--color-text);
-  line-height: 1.2;
+/* Reset Leaflet's p { margin: 18px 0 } inside popup */
+.map-popup__card p {
   margin: 0;
 }
 
+.map-popup__name {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
 .map-popup__location {
-  font-size: var(--text-xs);
+  font-size: 0.7rem;
   color: var(--color-text-muted);
-  margin: 0;
+  letter-spacing: 0.02em;
 }
 
 .map-popup__note {
