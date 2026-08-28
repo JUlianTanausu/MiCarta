@@ -55,6 +55,19 @@
     "tags": ["bocadillo", "carnes", "torreznos"]
   },
   {
+    "id": "hotel-restaurante-marino-honrubia",
+    "name": "Hotel Restaurante Marino",
+    "cuisine": "Bar de carretera",
+    "city": "Honrubia",
+    "province": "Cuenca",
+    "coordinates": { "lat": 39.59720577233976, "lng": -2.2803750771706537 },
+    "address": "Autovía del Este, KM 168, 16730 Honrubia, Cuenca",
+    "googleMapsUrl": "https://maps.google.com/?q=39.59720577233976,-2.2803750771706537",
+    "photos": [],
+    "personalNote": "Bocadillos de carne a la brasa.",
+    "tags": ["bocadillo", "carnes", "brasa"]
+  },
+  {
     "id": "area-servicio-40-pies-cabanes",
     "name": "Área de Servicio 40 Pies",
     "cuisine": "Bar de carretera",
