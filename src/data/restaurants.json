@@ -107,6 +107,20 @@
     "tags": ["bocadillo", "tapas", "plato combinado"]
   },
   {
+    "id": "restaurant-la-llar-benicassim",
+    "name": "Restaurant La Llar",
+    "cuisine": "Arroces",
+    "city": "Benicàssim",
+    "province": "Castelló",
+    "coordinates": { "lat": 40.05686579765347, "lng": 0.06571377717068645 },
+    "address": "Carrer Santa Agueda, 9, 12560 Benicàssim, Castelló",
+    "googleMapsUrl": "https://maps.app.goo.gl/LwyxsN5xzmxtRnrL6",
+    "photos": [],
+    "warning": "Reservar",
+    "personalNote": "Muy buenos arroces y paellas.",
+    "tags": ["arroces", "paella"]
+  },
+  {
     "id": "lespart-castello",
     "name": "L'Espart",
     "cuisine": "Arroces",
