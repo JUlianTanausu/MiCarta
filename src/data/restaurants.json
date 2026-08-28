@@ -40,5 +40,18 @@
       "carnes",
       "brasa"
     ]
+  },
+  {
+    "id": "area-103-almadrones",
+    "name": "Area 103",
+    "cuisine": "Bar de carretera",
+    "city": "Almadrones",
+    "province": "Guadalajara",
+    "coordinates": { "lat": 40.89620853506005, "lng": -2.7605409389339646 },
+    "address": "A-2, Pk 101, 8, 19490 Almadrones, Guadalajara",
+    "googleMapsUrl": "https://maps.google.com/?q=40.89620853506005,-2.7605409389339646",
+    "photos": [],
+    "personalNote": "Bocadillos increíbles y torreznos.",
+    "tags": ["tapas", "carnes"]
   }
 ]
