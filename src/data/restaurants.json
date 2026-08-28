@@ -135,6 +135,20 @@
     "tags": ["paella", "postres"]
   },
   {
+    "id": "restaurante-el-barco-la-victoria",
+    "name": "Restaurante El Barco",
+    "cuisine": "Guachinche",
+    "city": "La Victoria de Acentejo",
+    "province": "Santa Cruz de Tenerife",
+    "coordinates": { "lat": 28.433073334432017, "lng": -16.459876429414827 },
+    "address": "C. Maria Nieves, 13, 38389 La Victoria de Acentejo, Santa Cruz de Tenerife",
+    "googleMapsUrl": "https://maps.app.goo.gl/mMHHsdV4grMyRXev7",
+    "photos": [],
+    "warning": "Ir 10 minutos antes de que abra",
+    "personalNote": "Parece una pescadería, entras y eliges el pescado que quieres y cómo. En todo guachinche hay que beber vino.",
+    "tags": ["guachinche", "pescado"]
+  },
+  {
     "id": "guachinche-como-en-casa-la-laguna",
     "name": "Guachinche Como En Casa",
     "cuisine": "Guachinche",

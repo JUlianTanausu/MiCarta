@@ -5,7 +5,7 @@ import './RestaurantCard.css'
 const TAG_EMOJI: Record<string, string> = {
   mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
   carnes: '🥩', brasa: '🔥', bocadillo: '🥖', torreznos: '🥓', tapas: '🍢', 'carne cabra': '🐐', cordero: '🐑', cochinillo: '🐷', sushi: '🍣', pizza: '🍕',
-  pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷', cervezas: '🍺', cremaet: '☕', 'plato combinado': '🍽️',
+  pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷', cervezas: '🍺', cremaet: '☕', guachinche: '🏺', 'plato combinado': '🍽️',
 }
 
 function RestaurantCover({ tags, name }: { tags: string[]; name: string }) {
