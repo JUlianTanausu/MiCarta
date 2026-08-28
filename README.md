@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/assets/logo.png" width="120" alt="miCarta logo" />
+  <img src="src/assets/logo.png" width="200" alt="miCarta logo" />
 </p>
 
 <h1 align="center">miCarta</h1>
