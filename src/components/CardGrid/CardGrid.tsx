@@ -56,8 +56,6 @@ export function CardGrid({ restaurants }: CardGridProps) {
             variants={itemVariants}
             layout
             exit={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-50px' }}
           >
             <RestaurantCard
               restaurant={restaurant}
