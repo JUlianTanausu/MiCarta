@@ -28,7 +28,7 @@ interface RestaurantCardProps {
 }
 
 export function RestaurantCard({ restaurant }: RestaurantCardProps) {
-  const { name, cuisine: _cuisine, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
+  const { name, cuisine: _cuisine, city, province, photos, warning, tags, googleMapsUrl, personalNote } = restaurant
   const hasPhoto = photos.length > 0 && photos[0]
 
   return (
@@ -73,7 +73,7 @@ export function RestaurantCard({ restaurant }: RestaurantCardProps) {
       <div className="card__body">
         <div className="card__meta">
           <h2 className="card__name">{name}</h2>
-          <p className="card__location">{province}</p>
+          <p className="card__location">{city} · {province}</p>
         </div>
 
         <blockquote className="card__note">

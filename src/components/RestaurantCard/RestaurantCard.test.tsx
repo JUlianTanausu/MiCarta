@@ -22,9 +22,9 @@ describe('RestaurantCard', () => {
     expect(container.querySelector('.card__name')).toHaveTextContent('El Faro')
   })
 
-  it('renders province', () => {
+  it('renders city and province', () => {
     render(<RestaurantCard restaurant={baseRestaurant} />)
-    expect(screen.getByText('Cádiz')).toBeInTheDocument()
+    expect(screen.getByText('Cádiz · Cádiz')).toBeInTheDocument()
   })
 
   it('renders all tags', () => {
