@@ -9,8 +9,8 @@
 }
 
 .footer__logo {
-  width: 200px;
-  height: 200px;
+  width: clamp(200px, 45vw, 300px);
+  height: clamp(200px, 45vw, 300px);
   object-fit: contain;
   border-radius: 50%;
   opacity: 0.85;
