@@ -166,7 +166,6 @@
 
 .map-popup__note {
   font-family: var(--font-display);
-  font-style: italic;
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   border-left: 2px solid var(--color-primary);

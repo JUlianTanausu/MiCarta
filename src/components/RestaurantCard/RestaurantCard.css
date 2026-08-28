@@ -123,7 +123,6 @@
 /* Personal note — fixed height so tags align across all cards */
 .card__note {
   font-family: var(--font-display);
-  font-style: italic;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
   border-left: 3px solid var(--color-primary);
