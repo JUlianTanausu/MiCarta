@@ -18,9 +18,7 @@ export default function App() {
     const el = document.querySelector<HTMLElement>('.app__main')
     if (el?.scrollTo) el.scrollTo(0, 0)
   }, [])
-  const [showSplash, setShowSplash] = useState<boolean>(
-    () => !sessionStorage.getItem('micarta-splash-shown')
-  )
+  const [showSplash, setShowSplash] = useState<boolean>(true)
 
   const handleSplashDone = () => {
     sessionStorage.setItem('micarta-splash-shown', '1')
