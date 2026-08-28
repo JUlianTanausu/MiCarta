@@ -94,10 +94,22 @@ export function MapView({ restaurants }: MapViewProps) {
                   )}
                 </div>
                 <div className="map-popup__body">
-                  <p className="map-popup__name">{restaurant.name}</p>
-                  <p className="map-popup__location">
-                    {restaurant.city} · {restaurant.province}
-                  </p>
+                  <div className="map-popup__meta">
+                    <p className="map-popup__name">{restaurant.name}</p>
+                    <p className="map-popup__location">
+                      {restaurant.city} · {restaurant.province}
+                    </p>
+                  </div>
+                  <blockquote className="map-popup__note">
+                    "{restaurant.personalNote}"
+                  </blockquote>
+                  {restaurant.tags.length > 0 && (
+                    <div className="map-popup__tags">
+                      {restaurant.tags.map(tag => (
+                        <span key={tag} className="map-popup__tag">{tag}</span>
+                      ))}
+                    </div>
+                  )}
                   <a
                     href={restaurant.googleMapsUrl}
                     target="_blank"

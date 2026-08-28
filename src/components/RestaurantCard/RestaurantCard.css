@@ -120,7 +120,7 @@
   margin-top: var(--space-1);
 }
 
-/* Personal note */
+/* Personal note — fixed height so tags align across all cards */
 .card__note {
   font-family: var(--font-display);
   font-style: italic;
@@ -130,6 +130,7 @@
   padding-left: var(--space-3);
   margin: 0;
   line-height: 1.6;
+  height: calc(var(--text-sm) * 1.6 * 3);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
