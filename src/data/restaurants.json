@@ -55,6 +55,20 @@
     "tags": ["bocadillo", "carnes", "torreznos"]
   },
   {
+    "id": "lespart-castello",
+    "name": "L'Espart",
+    "cuisine": "Arroces",
+    "city": "Castelló de la Plana",
+    "province": "Castelló",
+    "coordinates": { "lat": 39.986874415723115, "lng": -0.032805659851720737 },
+    "address": "Carrer de Peníscola, 18, 12003 Castelló de la Plana, Castelló",
+    "googleMapsUrl": "https://maps.google.com/?q=39.986874415723115,-0.032805659851720737",
+    "photos": [],
+    "warning": "Mejor reservar, es pequeño",
+    "personalNote": "Paellas a leña, postres caseros, muy buen menú y comida muy buena.",
+    "tags": ["paella", "postres"]
+  },
+  {
     "id": "guachinche-como-en-casa-la-laguna",
     "name": "Guachinche Como En Casa",
     "cuisine": "Guachinche",
