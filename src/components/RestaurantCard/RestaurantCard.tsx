@@ -4,7 +4,7 @@ import './RestaurantCard.css'
 
 const TAG_EMOJI: Record<string, string> = {
   mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
-  carnes: '🥩', brasa: '🔥', tapas: '🍢', sushi: '🍣', pizza: '🍕',
+  carnes: '🥩', brasa: '🔥', bocadillo: '🥖', tapas: '🍢', sushi: '🍣', pizza: '🍕',
   pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷',
 }
 
