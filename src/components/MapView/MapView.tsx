@@ -12,7 +12,7 @@ interface MapViewProps {
 
 const TAG_EMOJI: Record<string, string> = {
   mariscos: '🦞', arroces: '🥘', paella: '🥘', pescado: '🐟',
-  carnes: '🥩', brasa: '🔥', bocadillo: '🥖', torreznos: '🥓', tapas: '🍢', sushi: '🍣', pizza: '🍕',
+  carnes: '🥩', brasa: '🔥', bocadillo: '🥖', torreznos: '🥓', tapas: '🍢', 'carne cabra': '🐐', sushi: '🍣', pizza: '🍕',
   pasta: '🍝', cocina: '🍳', postres: '🍮', vinos: '🍷', cremaet: '☕',
 }
 
