@@ -115,16 +115,18 @@
 }
 
 .card__location {
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
   margin-top: var(--space-1);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 /* Personal note — fixed height so tags align across all cards */
 .card__note {
   font-family: var(--font-display);
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  color: #CDD1E8;
   border-left: 3px solid var(--color-primary);
   padding-left: var(--space-3);
   margin: 0;
@@ -136,10 +138,11 @@
   overflow: hidden;
 }
 
-/* Tags */
+/* Tags — single line, overflow hidden to keep all cards the same height */
 .card__tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
   gap: var(--space-2);
 }
 
