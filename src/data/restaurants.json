@@ -164,6 +164,20 @@
     "tags": ["carne cabra", "tapas"]
   },
   {
+    "id": "al-punto-y-carbon",
+    "name": "Al Punto y Carbon",
+    "cuisine": "Peruano",
+    "city": "Alcobendas",
+    "province": "Madrid",
+    "coordinates": { "lat": 40.551541615650514, "lng": -3.6539815608913475 },
+    "address": "P.º de Valdelasfuentes, 9, Loc 1, 28100 Alcobendas, Madrid",
+    "googleMapsUrl": "https://maps.app.goo.gl/XDcX5qBywenqTiyU6",
+    "photos": [],
+    "warning": "Mejor reservar",
+    "personalNote": "Parrillita que te trae a la mesa.",
+    "tags": ["parrilla"]
+  },
+  {
     "id": "el-pescadito-benidorm",
     "name": "El Pescadito",
     "cuisine": "Arroces y pescados",
